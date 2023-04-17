@@ -14,7 +14,7 @@ namespace ConciliadoraTestes.Testes.Dashboard.DashboardGerencial
         private EncerraDriver encerra = new EncerraDriver();
 
         [TestMethod]
-        public void ChamaMetodosGrupoEmpresas()
+        public void ChamaMetodosDashboard()
         {
             inicializaDriver.Iniciar();
             _login.RealizaLogin();
