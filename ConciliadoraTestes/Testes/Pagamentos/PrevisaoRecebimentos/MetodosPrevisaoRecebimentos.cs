@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConciliadoraTestes.Testes.Pagamentos.PrevisaoRecebimentos.PrevisaoRecebimentos
+namespace ConciliadoraTestes.Testes.Pagamentos.PrevisaoRecebimentos
 {
     public class MetodosPrevisaoRecebimentos
     {

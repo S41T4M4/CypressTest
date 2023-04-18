@@ -1,6 +1,6 @@
 ﻿using ConciliadoraTestes.Metodos;
 
-namespace ConciliadoraTestes.Testes.Pagamentos.PrevisaoRecebimentos.PrevisaoRecebimentos
+namespace ConciliadoraTestes.Testes.Pagamentos.PrevisaoRecebimentos
 {
     [TestClass]
     public class TestePrevisaoRecebimentos : MetodosPrevisaoRecebimentos
@@ -9,7 +9,7 @@ namespace ConciliadoraTestes.Testes.Pagamentos.PrevisaoRecebimentos.PrevisaoRece
         private EncerraDriver encerra = new EncerraDriver();
 
         [TestMethod]
-        public void ChamaMetodosPagamentosConfirmados()
+        public void ChamaMetodosPrevisaoRecebimentos()
         {
             inicializaDriver.Iniciar();
             _login.RealizaLogin();
