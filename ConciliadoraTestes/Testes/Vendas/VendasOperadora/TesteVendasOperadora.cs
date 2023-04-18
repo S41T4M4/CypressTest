@@ -14,7 +14,7 @@ namespace ConciliadoraTestes.Testes.Vendas.VendasOperadoras
         private EncerraDriver encerra = new EncerraDriver();
 
         [TestMethod]
-        public void ChamaMetodosDashboard()
+        public void ChamaMetodosVendasOperadoras()
         {
             inicializaDriver.Iniciar();
             _login.RealizaLogin();

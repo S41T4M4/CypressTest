@@ -5,21 +5,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConciliadoraTestes.Testes.Vendas.VendasSistema
+namespace ConciliadoraTestes.Testes.Vendas.AuditoriaDeVendas
 {
     [TestClass]
-    public class TesteVendasSistema : MetodosVendasSistema
+    public class TesteAuditoriaDeVendas : MetodosAuditoriaDeVendas
     {
         private Login _login = new Login();
         private EncerraDriver encerra = new EncerraDriver();
 
         [TestMethod]
-        public void ChamaMetodosVendasSistema()
+        public void ChamaMetodosAuditoriaDeVendas()
         {
             inicializaDriver.Iniciar();
             _login.RealizaLogin();
             inicializaDriver.ObterDriver().Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(30);
-            AbrirVendasSistema();
+            AbrirAuditoriaDeVendas();
             encerra.FechaDriver();
         }
     }

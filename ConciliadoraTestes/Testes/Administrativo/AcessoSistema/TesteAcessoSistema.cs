@@ -1,0 +1,22 @@
+﻿using ConciliadoraTestes.Metodos;
+
+namespace ConciliadoraTestes.Testes.Admistrativo.AcessoSistema
+{
+    [TestClass]
+    public class TesteAcessoSistema : MetodosAcessoSistema
+    {
+        private Login _login = new Login();
+        private EncerraDriver encerra = new EncerraDriver();
+
+        [TestMethod]
+        public void ChamaMetodosAcessoSistema()
+        {
+            inicializaDriver.Iniciar();
+            _login.RealizaLogin();
+            inicializaDriver.ObterDriver().Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
+            AbrirAcessoSistema();
+            inicializaDriver.ObterDriver().Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
+            encerra.FechaDriver();
+        }
+    }
+}
