@@ -18,8 +18,11 @@ namespace ConciliadoraTestes.Testes.Vendas.VendasOperadoras
         {
             inicializaDriver.Iniciar();
             _login.RealizaLogin();
-            inicializaDriver.ObterDriver().Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(30);
+            inicializaDriver.ObterDriver().Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
             AbrirVendasOperadoras();
+            inicializaDriver.ObterDriver().Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
+            ValidaCarregamento();
+            inicializaDriver.ObterDriver().Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
             encerra.FechaDriver();
         }
     }

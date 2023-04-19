@@ -16,6 +16,8 @@ namespace ConciliadoraTestes.Testes.Admistrativo.MonitorFluxoConcessao
             inicializaDriver.ObterDriver().Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
             AbrirMonitorFluxoConcessao();
             inicializaDriver.ObterDriver().Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
+            ValidaCarregamento();
+            inicializaDriver.ObterDriver().Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
             encerra.FechaDriver();
         }
     }

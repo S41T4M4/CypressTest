@@ -17,5 +17,19 @@ namespace ConciliadoraTestes.Metodos
         {
             _inicializar.ObterDriver().Close();
         }
+
+        [TestCleanup]
+        public void FalharTeste() //Sobrecarga
+        {
+            FechaDriver(); //O método FalharTeste() chama o método FechaDriver() declarado acima e gera a falha
+            Assert.Fail();
+        }
+
+        [TestCleanup]
+        public void FalharTeste(string mensagem)
+        {
+            FechaDriver();
+            Assert.Fail(mensagem);
+        }
     }
 }

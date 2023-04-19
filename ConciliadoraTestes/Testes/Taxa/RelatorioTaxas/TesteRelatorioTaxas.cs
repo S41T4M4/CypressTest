@@ -16,6 +16,8 @@ namespace ConciliadoraTestes.Testes.Taxa.RelatorioTaxas
             inicializaDriver.ObterDriver().Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
             AbrirRelatorioTaxas();
             inicializaDriver.ObterDriver().Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
+            ValidaCarregamento();
+            inicializaDriver.ObterDriver().Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
             encerra.FechaDriver();
         }
     }
