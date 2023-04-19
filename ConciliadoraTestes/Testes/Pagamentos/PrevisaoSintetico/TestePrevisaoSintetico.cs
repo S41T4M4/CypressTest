@@ -16,6 +16,8 @@ namespace ConciliadoraTestes.Testes.Pagamentos.PrevisaoSintetico
             inicializaDriver.ObterDriver().Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
             AbrirPrevisaoSintetico();
             inicializaDriver.ObterDriver().Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
+            ValidaCarregamento();
+            inicializaDriver.ObterDriver().Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
             encerra.FechaDriver();
         }
     }

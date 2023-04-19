@@ -20,6 +20,9 @@ namespace ConciliadoraTestes.Testes.Dashboard.BancoDoBrasil
             _login.RealizaLogin();
             inicializaDriver.ObterDriver().Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(30);
             AbrirBancoDoBrasil();
+            inicializaDriver.ObterDriver().Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
+            ValidaCarregamento();
+            inicializaDriver.ObterDriver().Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
             encerra.FechaDriver();
         }
     }

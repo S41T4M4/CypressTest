@@ -6,12 +6,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using OpenQA.Selenium.Support.UI;
+using SeleniumExtras.WaitHelpers;
 
 namespace ConciliadoraTestes.Testes.Vendas.ConferenciaDeVendas
 {
     public class MetodosConferenciaDeVendas
     {
         protected InicializaDriver inicializaDriver = new InicializaDriver();
+        private EncerraDriver encerra = new EncerraDriver();
 
         public void AbrirConferenciaDeVendas()
         {
@@ -28,6 +31,15 @@ namespace ConciliadoraTestes.Testes.Vendas.ConferenciaDeVendas
             inicializaDriver.ObterDriver().Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
             conferenciaDeVendas.Click();
         }
+        public void ValidaCarregamento()
+        {
+            var wait = new WebDriverWait(inicializaDriver.ObterDriver(), TimeSpan.FromSeconds(10));
+            IWebElement element = wait.Until(ExpectedConditions.ElementIsVisible(By.Id("calendarioVendas")));
 
+            if (!element.Displayed) //Se o element NÃO for exibido
+            {
+                encerra.FalharTeste("O elemento não carregou");
+            }
+        }
     }
 }

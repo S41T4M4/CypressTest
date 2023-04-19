@@ -1,12 +1,16 @@
 ﻿using ConciliadoraTestes.Metodos;
 using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Support.UI;
+using SeleniumExtras.WaitHelpers;
 
 namespace ConciliadoraTestes.Testes.Pagamentos.PrevisaoSintetico
 {
     public class MetodosPrevisaoSintetico
     {
         protected InicializaDriver inicializaDriver = new InicializaDriver();
+        private EncerraDriver encerra = new EncerraDriver();
+
         public void AbrirPrevisaoSintetico()
         {
             Actions acao = new Actions(inicializaDriver.ObterDriver());
@@ -19,6 +23,16 @@ namespace ConciliadoraTestes.Testes.Pagamentos.PrevisaoSintetico
             IWebElement previsaoSintetico = inicializaDriver.ObterDriver().FindElement(By.XPath("//span[text()='Previsão de Recebimentos Sintético']"));
             inicializaDriver.ObterDriver().Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(30);
             previsaoSintetico.Click();
+        }
+        public void ValidaCarregamento()
+        {
+            var wait = new WebDriverWait(inicializaDriver.ObterDriver(), TimeSpan.FromSeconds(10));
+            IWebElement element = wait.Until(ExpectedConditions.ElementIsVisible(By.Id("gridPrincipal")));
+
+            if (!element.Displayed) //Se o element NÃO for exibido
+            {
+                encerra.FalharTeste("O elemento não carregou");
+            }
         }
     }
 }

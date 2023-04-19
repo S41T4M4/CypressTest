@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Configuration;
 using Microsoft.Extensions.Configuration;
+using Newtonsoft.Json.Linq;
+using OpenQA.Selenium.Interactions;
 
 namespace ConciliadoraTestes.Metodos
 {
@@ -37,6 +39,15 @@ namespace ConciliadoraTestes.Metodos
         public IWebDriver ObterDriver()
         {
             return _driver;
+        }
+
+        public void Scroll(IWebElement barra, int horizontal, int vertical) //Método para rolar um elemento da tela.
+        {
+            WheelInputDevice.ScrollOrigin scrollOrigin = new WheelInputDevice.ScrollOrigin
+            {
+                Element = barra
+            };
+            new Actions(_driver).ScrollFromOrigin(scrollOrigin, horizontal, vertical).Perform();
         }
     }
 }

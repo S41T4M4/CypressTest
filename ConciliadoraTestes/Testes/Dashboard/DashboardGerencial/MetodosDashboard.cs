@@ -6,12 +6,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using OpenQA.Selenium;
+using OpenQA.Selenium.Support.UI;
+using ExpectedConditions = SeleniumExtras.WaitHelpers.ExpectedConditions;
 
 namespace ConciliadoraTestes.Testes.Dashboard.DashboardGerencial
 {
     public class MetodosDashboard
     {
         protected InicializaDriver inicializaDriver = new InicializaDriver();
+        private EncerraDriver encerra = new EncerraDriver();
 
         public void AbrirDashboard()
         {
@@ -27,6 +31,19 @@ namespace ConciliadoraTestes.Testes.Dashboard.DashboardGerencial
             IWebElement gerencial = inicializaDriver.ObterDriver().FindElement(By.XPath("//span[text()='Gerencial']")); //Localiza pelo texto exibido
             inicializaDriver.ObterDriver().Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
             gerencial.Click();
+
+        }
+
+        public void ValidaCarregamento()
+        {
+            var wait = new WebDriverWait(inicializaDriver.ObterDriver(), TimeSpan.FromSeconds(10));
+            IWebElement element = wait.Until(ExpectedConditions.ElementIsVisible(By.Id("blockVendas")));
+
+            if (!element.Displayed) //Se o element NÃO for exibido
+            {
+                encerra.FalharTeste("O elemento não carregou");
+            }
+
         }
 
     }
