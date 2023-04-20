@@ -1,20 +1,20 @@
 ﻿using ConciliadoraTestes.Metodos;
 
-namespace ConciliadoraTestes.Testes.Banco.ConciliacaoBancaria
+namespace ConciliadoraTestes.Testes.UploadArquivos.Mafra
 {
     [TestClass]
-    public class TesteConciliacaoBancaria : MetodosConciliacaoBancaria
+    public class TesteMafra : MetodosMafra
     {
         private Login _login = new Login();
         private EncerraDriver encerra = new EncerraDriver();
 
         [TestMethod]
-        public void ChamaMetodosConciliacaoBancaria()
+        public void ChamaMetodosMafra()
         {
             inicializaDriver.Iniciar();
             _login.RealizaLogin();
             inicializaDriver.ObterDriver().Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
-            AbrirConciliacaoBancaria();
+            AbrirMafra();
             inicializaDriver.ObterDriver().Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
             ValidaCarregamento();
             inicializaDriver.ObterDriver().Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);

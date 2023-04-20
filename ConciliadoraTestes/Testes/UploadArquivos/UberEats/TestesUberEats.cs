@@ -1,20 +1,20 @@
 ﻿using ConciliadoraTestes.Metodos;
 
-namespace ConciliadoraTestes.Testes.Banco.ConciliacaoBancaria
+namespace ConciliadoraTestes.Testes.UploadArquivos.UberEats
 {
     [TestClass]
-    public class TesteConciliacaoBancaria : MetodosConciliacaoBancaria
+    public class TesteUberEats : MetodosUberEats
     {
         private Login _login = new Login();
         private EncerraDriver encerra = new EncerraDriver();
 
         [TestMethod]
-        public void ChamaMetodosConciliacaoBancaria()
+        public void ChamaMetodosUberEats()
         {
             inicializaDriver.Iniciar();
             _login.RealizaLogin();
             inicializaDriver.ObterDriver().Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
-            AbrirConciliacaoBancaria();
+            AbrirUberEats();
             inicializaDriver.ObterDriver().Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
             ValidaCarregamento();
             inicializaDriver.ObterDriver().Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
