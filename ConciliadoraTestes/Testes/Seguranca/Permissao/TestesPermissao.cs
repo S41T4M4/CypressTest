@@ -1,20 +1,20 @@
 ﻿using ConciliadoraTestes.Metodos;
 
-namespace ConciliadoraTestes.Testes.Banco.ConciliacaoBancaria
+namespace ConciliadoraTestes.Testes.Seguranca.Permissao
 {
     [TestClass]
-    public class TesteConciliacaoBancaria : MetodosConciliacaoBancaria
+    public class TestePermissao : MetodosPermissao
     {
         private Login _login = new Login();
         private EncerraDriver encerra = new EncerraDriver();
 
         [TestMethod]
-        public void ChamaMetodosConciliacaoBancaria()
+        public void ChamaMetodosPermissao()
         {
             inicializaDriver.Iniciar();
             _login.RealizaLogin();
             inicializaDriver.ObterDriver().Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
-            AbrirConciliacaoBancaria();
+            AbrirPermissao();
             inicializaDriver.ObterDriver().Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
             ValidaCarregamento();
             inicializaDriver.ObterDriver().Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);

@@ -1,20 +1,20 @@
 ﻿using ConciliadoraTestes.Metodos;
 
-namespace ConciliadoraTestes.Testes.Banco.ConciliacaoBancaria
+namespace ConciliadoraTestes.Testes.UploadArquivos.Evo
 {
     [TestClass]
-    public class TesteConciliacaoBancaria : MetodosConciliacaoBancaria
+    public class TesteEvo : MetodosEvo
     {
         private Login _login = new Login();
         private EncerraDriver encerra = new EncerraDriver();
 
         [TestMethod]
-        public void ChamaMetodosConciliacaoBancaria()
+        public void ChamaMetodosEvo()
         {
             inicializaDriver.Iniciar();
             _login.RealizaLogin();
             inicializaDriver.ObterDriver().Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
-            AbrirConciliacaoBancaria();
+            AbrirEvo();
             inicializaDriver.ObterDriver().Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
             ValidaCarregamento();
             inicializaDriver.ObterDriver().Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
