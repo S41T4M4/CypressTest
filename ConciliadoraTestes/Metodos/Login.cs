@@ -21,7 +21,7 @@ namespace ConciliadoraTestes.Metodos
             {
                 Thread.Sleep(5000); //Login antigo
                 var configuration = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build();
-                IWebElement campoEmail = _inicializar.ObterDriver().FindElement(By.CssSelector("input#login2"));
+                IWebElement campoEmail = _inicializar.ObterDriver().FindElement(By.CssSelector("input#login"));
                 campoEmail.SendKeys(configuration.GetValue<string>("Logar:Usuario"));
 
                 //IWebElement btnProximo = _inicializar.ObterDriver().FindElement(By.XPath("//button[@id='btProximo']")); //SSO
