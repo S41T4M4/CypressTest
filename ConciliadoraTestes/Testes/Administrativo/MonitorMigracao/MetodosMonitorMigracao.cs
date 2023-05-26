@@ -8,8 +8,8 @@ namespace ConciliadoraTestes.Testes.Admistrativo.MonitorMigracao
 {
     public class MetodosMonitorMigracao
     {
-        protected InicializaDriver inicializaDriver = new InicializaDriver();
-        private EncerraDriver encerra = new EncerraDriver();
+        protected Driver inicializaDriver = new Driver();
+        
 
         public void AbrirMonitorMigracao()
         {
@@ -33,7 +33,7 @@ namespace ConciliadoraTestes.Testes.Admistrativo.MonitorMigracao
 
             if (!element.Displayed) //Se o element NÃO for exibido
             {
-                encerra.FalharTeste("O elemento não carregou");
+                inicializaDriver.FalharTeste("O elemento não carregou");
             }
 
         }

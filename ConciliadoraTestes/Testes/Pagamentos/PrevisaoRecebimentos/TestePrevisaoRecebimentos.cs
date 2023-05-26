@@ -1,4 +1,5 @@
 ﻿using ConciliadoraTestes.Metodos;
+using OpenQA.Selenium;
 
 namespace ConciliadoraTestes.Testes.Pagamentos.PrevisaoRecebimentos
 {
@@ -6,7 +7,7 @@ namespace ConciliadoraTestes.Testes.Pagamentos.PrevisaoRecebimentos
     public class TestePrevisaoRecebimentos : MetodosPrevisaoRecebimentos
     {
         private Login _login = new Login();
-        private EncerraDriver encerra = new EncerraDriver();
+        
 
         [TestMethod]
         public void ChamaMetodosPrevisaoRecebimentos()
@@ -14,14 +15,31 @@ namespace ConciliadoraTestes.Testes.Pagamentos.PrevisaoRecebimentos
             inicializaDriver.Iniciar();
             _login.RealizaLogin();
             inicializaDriver.ObterDriver().Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
-            AbrirPrevisaoRecebimentos();
-            inicializaDriver.ObterDriver().Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
-            ValidaCards();
-            inicializaDriver.ObterDriver().Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
-            ValidaGridRecebimentos();
-            inicializaDriver.ObterDriver().Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
-            ValidaGridDebitos();
-            encerra.FechaDriver();
+            try
+            {
+                AbrirPrevisaoRecebimentos();
+                inicializaDriver.ObterDriver().Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
+                ValidaCards();
+                inicializaDriver.ObterDriver().Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
+                ValidaGridDebitos();
+                inicializaDriver.ObterDriver().Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
+                ValidaGridRecebimentos();
+                inicializaDriver.FechaDriver();
+            }
+            catch (NoSuchElementException ex)
+            {
+                // Lidere com a exceção quando o elemento não for encontrado
+                inicializaDriver.FalharTeste(ex.Message);
+            }
+            catch (ElementNotVisibleException ex)
+            {
+                // Lidere com a exceção quando o elemento não estiver visível
+                inicializaDriver.FalharTeste(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                inicializaDriver.FalharTeste(ex.Message);
+            }
         }
     }
 }

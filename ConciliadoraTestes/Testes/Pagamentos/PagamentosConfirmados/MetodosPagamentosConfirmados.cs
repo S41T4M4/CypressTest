@@ -12,7 +12,7 @@ namespace ConciliadoraTestes.Testes.Pagamentos.PagamentosConfirmados
 
     public class MetodosPagamentosConfirmados
     {
-        protected InicializaDriver inicializaDriver = new InicializaDriver();
+        protected Driver inicializaDriver = new Driver();
 
         public void AbrirPagamentosConfirmados()
         {

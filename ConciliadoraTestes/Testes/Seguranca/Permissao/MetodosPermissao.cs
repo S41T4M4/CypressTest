@@ -8,8 +8,8 @@ namespace ConciliadoraTestes.Testes.Seguranca.Permissao
 {
     public class MetodosPermissao
     {
-        protected InicializaDriver inicializaDriver = new InicializaDriver();
-        private EncerraDriver encerra = new EncerraDriver();
+        protected Driver inicializaDriver = new Driver();
+        
 
         public void AbrirPermissao()
         {
@@ -33,7 +33,7 @@ namespace ConciliadoraTestes.Testes.Seguranca.Permissao
 
             if (!element.Displayed) //Se o element NÃO for exibido
             {
-                encerra.FalharTeste("O elemento não carregou");
+                inicializaDriver.FalharTeste("O elemento não carregou");
             }
 
         }

@@ -1,4 +1,5 @@
 ﻿using ConciliadoraTestes.Metodos;
+using OpenQA.Selenium;
 
 namespace ConciliadoraTestes.Testes.UploadArquivos.Hipcom
 {
@@ -6,7 +7,7 @@ namespace ConciliadoraTestes.Testes.UploadArquivos.Hipcom
     public class TesteHipcom : MetodosHipcom
     {
         private Login _login = new Login();
-        private EncerraDriver encerra = new EncerraDriver();
+        
 
         [TestMethod]
         public void ChamaMetodosHipcom()
@@ -14,11 +15,28 @@ namespace ConciliadoraTestes.Testes.UploadArquivos.Hipcom
             inicializaDriver.Iniciar();
             _login.RealizaLogin();
             inicializaDriver.ObterDriver().Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
-            AbrirHipcom();
-            inicializaDriver.ObterDriver().Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
-            ValidaCarregamento();
-            inicializaDriver.ObterDriver().Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
-            encerra.FechaDriver();
+            try
+            {
+                AbrirHipcom();
+                inicializaDriver.ObterDriver().Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
+                ValidaCarregamento();
+                inicializaDriver.ObterDriver().Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
+                inicializaDriver.FechaDriver();
+            }
+            catch (NoSuchElementException ex)
+            {
+                // Lidere com a exceção quando o elemento não for encontrado
+                inicializaDriver.FalharTeste(ex.Message);
+            }
+            catch (ElementNotVisibleException ex)
+            {
+                // Lidere com a exceção quando o elemento não estiver visível
+                inicializaDriver.FalharTeste(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                inicializaDriver.FalharTeste(ex.Message);
+            }
         }
     }
 }

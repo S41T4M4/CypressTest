@@ -1,12 +1,6 @@
 ﻿using ConciliadoraTestes.Metodos;
 using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using ExpectedConditions = SeleniumExtras.WaitHelpers.ExpectedConditions;
 
@@ -14,8 +8,8 @@ namespace ConciliadoraTestes.Testes.Dashboard.DashboardGerencial
 {
     public class MetodosDashboard
     {
-        protected InicializaDriver inicializaDriver = new InicializaDriver();
-        private EncerraDriver encerra = new EncerraDriver();
+        protected Driver inicializaDriver = new Driver();
+        
 
         public void AbrirDashboard()
         {
@@ -41,10 +35,33 @@ namespace ConciliadoraTestes.Testes.Dashboard.DashboardGerencial
 
             if (!element.Displayed) //Se o element NÃO for exibido
             {
-                encerra.FalharTeste("O elemento não carregou");
+                inicializaDriver.FalharTeste("O elemento não carregou");
             }
-
         }
 
+        public void PesquisaRefo()
+        {
+            IWebElement campoRefo = inicializaDriver.ObterDriver().FindElement(By.CssSelector("input.dx-texteditor-input")); //Pega a classe do input do campo
+            inicializaDriver.ObterDriver().Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
+            campoRefo.Click();
+            campoRefo.SendKeys("10351");
+
+            Thread.Sleep(1000);
+
+            IWebElement refoId = inicializaDriver.ObterDriver().FindElement(By.CssSelector(".dx-item-content.dx-list-item-content"));
+            refoId.Click();
+
+            IWebElement campoData = inicializaDriver.ObterDriver().FindElement(By.Id("dateRangePicker"));
+            campoData.Click();
+            var mesInicial = inicializaDriver.ObterDriver().FindElements(By.CssSelector(".monthselect option[value='1']"));
+            mesInicial[0].Click(); // Seleciona a posição 0, pois existem dois campos de mês (dois calendários)
+        
+            var anoInicial = inicializaDriver.ObterDriver().FindElements(By.CssSelector(".yearselect option[value='2023']"));
+            anoInicial[0].Click();
+
+
+
+
+        }
     }
 }

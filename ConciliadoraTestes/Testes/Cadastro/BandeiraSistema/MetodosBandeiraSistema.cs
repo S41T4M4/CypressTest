@@ -8,8 +8,8 @@ namespace ConciliadoraTestes.Testes.Cadastro.BandeiraSistema
 {
     public class MetodosBandeiraSistema
     {
-        protected InicializaDriver inicializaDriver = new InicializaDriver();
-        private EncerraDriver encerra = new EncerraDriver();
+        protected Driver inicializaDriver = new Driver();
+        
 
         public void AbrirBandeiraSistema()
         {
@@ -31,7 +31,7 @@ namespace ConciliadoraTestes.Testes.Cadastro.BandeiraSistema
 
             if (!element.Displayed) //Se o element NÃO for exibido
             {
-                encerra.FalharTeste("O elemento não carregou");
+                inicializaDriver.FalharTeste("O elemento não carregou");
             }
 
         }

@@ -8,8 +8,8 @@ namespace ConciliadoraTestes.Testes.Admistrativo.LogSistema
 {
     public class MetodosLogSistema
     {
-        protected InicializaDriver inicializaDriver = new InicializaDriver();
-        private EncerraDriver encerra = new EncerraDriver();
+        protected Driver inicializaDriver = new Driver();
+        
 
         public void AbrirLogSistema()
         {
@@ -31,7 +31,7 @@ namespace ConciliadoraTestes.Testes.Admistrativo.LogSistema
 
             if (!element.Displayed) //Se o element NÃO for exibido
             {
-                encerra.FalharTeste("O elemento não carregou");
+                inicializaDriver.FalharTeste("O elemento não carregou");
             }
 
         }

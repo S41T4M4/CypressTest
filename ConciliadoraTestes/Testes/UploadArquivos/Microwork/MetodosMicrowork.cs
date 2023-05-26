@@ -8,8 +8,8 @@ namespace ConciliadoraTestes.Testes.UploadArquivos.Microwork
 {
     public class MetodosMicrowork
     {
-        protected InicializaDriver inicializaDriver = new InicializaDriver();
-        private EncerraDriver encerra = new EncerraDriver();
+        protected Driver inicializaDriver = new Driver();
+        
 
         public void AbrirMicrowork()
         {
@@ -33,7 +33,7 @@ namespace ConciliadoraTestes.Testes.UploadArquivos.Microwork
 
             if (!element.Displayed) //Se o element NÃO for exibido
             {
-                encerra.FalharTeste("O elemento não carregou");
+                inicializaDriver.FalharTeste("O elemento não carregou");
             }
         }
     }

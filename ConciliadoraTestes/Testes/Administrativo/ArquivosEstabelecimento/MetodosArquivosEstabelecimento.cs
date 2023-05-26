@@ -8,8 +8,8 @@ namespace ConciliadoraTestes.Testes.Admistrativo.ArquivosEstabelecimento
 {
     public class MetodosArquivosEstabelecimento
     {
-        protected InicializaDriver inicializaDriver = new InicializaDriver();
-        private EncerraDriver encerra = new EncerraDriver();
+        protected Driver inicializaDriver = new Driver();
+        
 
         public void AbrirArquivosEstabelecimento()
         {
@@ -31,7 +31,7 @@ namespace ConciliadoraTestes.Testes.Admistrativo.ArquivosEstabelecimento
 
             if (!element.Displayed) //Se o element NÃO for exibido
             {
-                encerra.FalharTeste("O elemento não carregou");
+                inicializaDriver.FalharTeste("O elemento não carregou");
             }
 
         }

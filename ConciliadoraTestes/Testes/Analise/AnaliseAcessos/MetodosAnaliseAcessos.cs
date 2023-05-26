@@ -1,12 +1,6 @@
 ﻿using ConciliadoraTestes.Metodos;
 using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using ExpectedConditions = SeleniumExtras.WaitHelpers.ExpectedConditions;
 
@@ -14,8 +8,8 @@ namespace ConciliadoraTestes.Testes.Analise.AnaliseAcessos
 {
     public class MetodosAnaliseAcessos
     {
-        protected InicializaDriver inicializaDriver = new InicializaDriver();
-        private EncerraDriver encerra = new EncerraDriver();
+        protected Driver inicializaDriver = new Driver();
+        
 
         public void AbrirAnaliseAcessos()
         {
@@ -41,7 +35,7 @@ namespace ConciliadoraTestes.Testes.Analise.AnaliseAcessos
 
             if (!element.Displayed) //Se o element NÃO for exibido
             {
-                encerra.FalharTeste("O elemento não carregou");
+                inicializaDriver.FalharTeste("O elemento não carregou");
             }
 
         }
