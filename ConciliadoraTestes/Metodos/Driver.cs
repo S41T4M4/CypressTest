@@ -1,14 +1,7 @@
 ﻿using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.UI;
 using OpenQA.Selenium;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Configuration;
 using Microsoft.Extensions.Configuration;
-using Newtonsoft.Json.Linq;
 using OpenQA.Selenium.Interactions;
 
 namespace ConciliadoraTestes.Metodos
@@ -20,14 +13,25 @@ namespace ConciliadoraTestes.Metodos
     /// </summary>
     
     [TestClass]
-    public class InicializaDriver
+    public class Driver
     {        
         private static IWebDriver _driver;
         public WebDriverWait espera;
+        private static bool _continuarExecucao = true;  //variável que armazena se ele deve continuar os testes
 
+        public void SetContinuarExecucao(bool valor)  //Altera o valor da variavel continuarExecucao
+        {
+            _continuarExecucao = valor;
+        }
+        #region TestInitialize
         [TestInitialize]
         public void Iniciar() 
         {
+            if (!_continuarExecucao)  //Testa se deve continuar ou não a execução dos testes.
+            {
+                throw new AssertInconclusiveException("Um teste anterior falhou. Pulando este teste");
+            }
+
             var configuration = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build();
             _driver = new ChromeDriver(configuration.GetValue<string>("Inicializar:DriverChrome"));
             espera = new WebDriverWait(_driver, TimeSpan.FromSeconds(10));
@@ -49,5 +53,27 @@ namespace ConciliadoraTestes.Metodos
             };
             new Actions(_driver).ScrollFromOrigin(scrollOrigin, horizontal, vertical).Perform();
         }
+        #endregion
+        #region TestCleanup
+        [TestCleanup]
+        public void FechaDriver()
+        {
+            _driver.Close();
+        }
+
+        [TestCleanup]
+        public void FalharTeste() //Sobrecarga
+        {
+            FechaDriver(); //O método FalharTeste() chama o método FechaDriver() declarado acima e gera a falha
+            Assert.Fail();
+        }
+
+        [TestCleanup]
+        public void FalharTeste(string mensagem)
+        {
+            FechaDriver();
+            Assert.Fail(mensagem);
+        }
     }
 }
+#endregion

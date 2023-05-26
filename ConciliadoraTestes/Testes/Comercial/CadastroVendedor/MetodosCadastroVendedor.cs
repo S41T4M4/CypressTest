@@ -8,8 +8,8 @@ namespace ConciliadoraTestes.Testes.Comercial.CadastroVendedor
 {
     public class MetodosCadastroVendedor
     {
-        protected InicializaDriver inicializaDriver = new InicializaDriver();
-        private EncerraDriver encerra = new EncerraDriver();
+        protected Driver inicializaDriver = new Driver();
+        
 
         public void AbrirCadastroVendedor()
         {
@@ -33,7 +33,7 @@ namespace ConciliadoraTestes.Testes.Comercial.CadastroVendedor
 
             if (!element.Displayed) //Se o element NÃO for exibido
             {
-                encerra.FalharTeste("O elemento não carregou");
+                inicializaDriver.FalharTeste("O elemento não carregou");
             }
 
         }

@@ -8,8 +8,7 @@ namespace ConciliadoraTestes.Testes.Admistrativo.ArquivosDesconhecidos
 {
     public class MetodosArquivosDesconhecidos
     {
-        protected InicializaDriver inicializaDriver = new InicializaDriver();
-        private EncerraDriver encerra = new EncerraDriver();
+        protected Driver inicializaDriver = new Driver();
 
         public void AbrirArquivosDesconhecidos()
         {
@@ -31,7 +30,7 @@ namespace ConciliadoraTestes.Testes.Admistrativo.ArquivosDesconhecidos
 
             if (!element.Displayed) //Se o element NÃO for exibido
             {
-                encerra.FalharTeste("O elemento não carregou");
+                inicializaDriver.FalharTeste("O elemento não carregou");
             }
 
         }

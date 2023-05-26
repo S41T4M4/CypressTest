@@ -8,7 +8,7 @@ namespace ConciliadoraTestes.Testes.Admistrativo.CampanhaBTG
 {
     public class MetodosCampanhaBTG
     {
-        protected InicializaDriver inicializaDriver = new InicializaDriver();
+        protected Driver inicializaDriver = new Driver();
 
         public void AbrirCampanhaBTG()
         {

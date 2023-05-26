@@ -8,8 +8,8 @@ namespace ConciliadoraTestes.Testes.Cadastro.DescricaoBancaria
 {
     public class MetodosDescricaoBancaria
     {
-        protected InicializaDriver inicializaDriver = new InicializaDriver();
-        private EncerraDriver encerra = new EncerraDriver();
+        protected Driver inicializaDriver = new Driver();
+        
 
         public void AbrirDescricaoBancaria()
         {
@@ -31,7 +31,7 @@ namespace ConciliadoraTestes.Testes.Cadastro.DescricaoBancaria
 
             if (!element.Displayed) //Se o element NÃO for exibido
             {
-                encerra.FalharTeste("O elemento não carregou");
+                inicializaDriver.FalharTeste("O elemento não carregou");
             }
 
         }

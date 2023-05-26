@@ -11,7 +11,7 @@ namespace ConciliadoraTestes.Testes.Pagamentos.PrevisaoRecebimentos
 {
     public class MetodosPrevisaoRecebimentos
     {
-        protected InicializaDriver inicializaDriver = new InicializaDriver();
+        protected Driver inicializaDriver = new Driver();
         public void AbrirPrevisaoRecebimentos()
         {
             Actions acao = new Actions(inicializaDriver.ObterDriver());

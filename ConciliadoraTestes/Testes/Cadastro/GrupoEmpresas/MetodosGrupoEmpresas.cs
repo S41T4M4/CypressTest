@@ -11,7 +11,7 @@ namespace ConciliadoraTestes.Testes.Cadastro.GrupoEmpresas
 {
     public class MetodosGrupoEmpresas
     {
-        protected InicializaDriver inicializaDriver = new InicializaDriver();
+        protected Driver inicializaDriver = new Driver();
 
         public void AbrirGrupoEmpresas()
         {
@@ -29,7 +29,7 @@ namespace ConciliadoraTestes.Testes.Cadastro.GrupoEmpresas
             grupo.Click();
         }
 
-        public void ValidaTela()
+        public void ValidaGrid()
         {
             var grid = inicializaDriver.ObterDriver().FindElements(By.CssSelector(".dx-datagrid-rowsview tr.dx-row.dx-row-lines"));  //nome da classe no css
             if (grid.Count <= 0)

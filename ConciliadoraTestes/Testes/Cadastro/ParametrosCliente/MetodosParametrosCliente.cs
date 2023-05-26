@@ -8,8 +8,8 @@ namespace ConciliadoraTestes.Testes.Cadastro.ParametrosCliente
 {
     public class MetodosParametrosCliente
     {
-        protected InicializaDriver inicializaDriver = new InicializaDriver();
-        private EncerraDriver encerra = new EncerraDriver();
+        protected Driver inicializaDriver = new Driver();
+        
 
         public void AbrirParametrosCliente()
         {
@@ -33,7 +33,7 @@ namespace ConciliadoraTestes.Testes.Cadastro.ParametrosCliente
 
             if (!element.Displayed) //Se o element NÃO for exibido
             {
-                encerra.FalharTeste("O elemento não carregou");
+                inicializaDriver.FalharTeste("O elemento não carregou");
             }
 
         }

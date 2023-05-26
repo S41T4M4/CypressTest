@@ -8,8 +8,8 @@ namespace ConciliadoraTestes.Testes.UploadArquivos.Auttar
 {
     public class MetodosAuttar
     {
-        protected InicializaDriver inicializaDriver = new InicializaDriver();
-        private EncerraDriver encerra = new EncerraDriver();
+        protected Driver inicializaDriver = new Driver();
+        
 
         public void AbrirAuttar()
         {
@@ -31,7 +31,7 @@ namespace ConciliadoraTestes.Testes.UploadArquivos.Auttar
 
             if (!element.Displayed) //Se o element NÃO for exibido
             {
-                encerra.FalharTeste("O elemento não carregou");
+                inicializaDriver.FalharTeste("O elemento não carregou");
             }
         }
     }
