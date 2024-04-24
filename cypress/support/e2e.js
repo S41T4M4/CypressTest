@@ -1,9 +1,4 @@
 
-import './Acoes'
-import './ValidacaoDashboard'
-import'./ValidacaoConferenciadeVendas'
-import'./ValidacaoVendasOperadoras'
-import'./ValidacaoAuditoriadeVendas'
-import'./ValidacaoPagamentosConfirmados'
-import'./ValidacaoPrevisaodeRecebimentos'
+import './Interagir'
+import './ValidarDashboard'
 import'./commands'
