@@ -8,9 +8,9 @@ Cypress.Commands.add('logarSite', (url) => {
 })
 Cypress.Commands.add('selecionarRefo', (valorInserido) => {
   cy.get('#dropDownSearch > div > div > div.dx-texteditor-input-container.dx-tag-container.dx-native-click > div.dx-tag > div > div').click();
-  cy.wait(3000);
+  cy.wait(1000);
   cy.get('#dropDownSearch > div.dx-dropdowneditor-input-wrapper.dx-selectbox-container > div > div.dx-texteditor-input-container.dx-tag-container.dx-native-click').click();
-  cy.get('#dropDownSearch > div.dx-dropdowneditor-input-wrapper.dx-selectbox-container > div > div.dx-texteditor-input-container.dx-tag-container.dx-native-click > input') .type(valorInserido).wait(2000).type('{enter}');
+  cy.get('#dropDownSearch > div.dx-dropdowneditor-input-wrapper.dx-selectbox-container > div > div.dx-texteditor-input-container.dx-tag-container.dx-native-click > input') .type(valorInserido).wait(1000).type('{enter}');
 });
 
 Cypress.Commands.add('selecionarCalendario', ()=> {
@@ -19,7 +19,7 @@ Cypress.Commands.add('selecionarCalendario', ()=> {
   cy.get('select.yearselect').eq(0).select('2023');
   cy.get('body > div.daterangepicker.ltr.auto-apply.show-ranges.show-calendar.opensright > div.drp-calendar.left > div.calendar-table > table > tbody > tr:nth-child(1) > td:nth-child(3)').click(); 
   cy.get('body > div.daterangepicker.ltr.auto-apply.show-ranges.show-calendar.opensright > div.drp-calendar.left > div.calendar-table > table > tbody > tr:nth-child(5) > td:nth-child(4)').click();
-  cy.wait(3000);
+  cy.wait(1000);
   cy.get('#btnApply > span').click();
 });
 

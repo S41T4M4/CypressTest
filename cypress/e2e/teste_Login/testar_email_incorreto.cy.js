@@ -3,9 +3,11 @@ describe('Erro de Email', () => {
     //Primeiro teste: Intranet.
     cy.emailErrado("https://intranet-hom.conciliadora.com.br/");
     cy.errorPopup();
+    
 
     //Segundo teste: App.
     cy.emailErrado("https://app-qas.conciliadora.com.br/");
     cy.errorPopup();
+    
   });
 });
