@@ -1,7 +1,7 @@
 Cypress.Commands.add('login',(url,email,senha)=>{
   cy.viewport(1920, 1080);
   cy.visit(url);
-  cy.get('#login').should('be.visible').type(email);
+  cy.get('#login').type(email);
   cy.get('#password').type(senha);
   cy.get('#btnLogin').click();
 })
@@ -32,4 +32,57 @@ Cypress.Commands.add('loginCorreto',()=>{
 })
 Cypress.Commands.add('paginaCarregada',()=>{
   cy.get('#logoMinimized').should('exist');
+})
+Cypress.Commands.add('esqueceuASenha',()=>{
+  cy.get('#kt_login > div > div.kt-grid__item.kt-grid__item--fluid.kt-grid__item--order-tablet-and-mobile-1.kt-login__wrapper > div.kt-login__body > div > form > div.kt-login__actions > a').should('be.visible')
+})
+Cypress.Commands.add('verificarDashboard',()=>{
+  cy.get('#kt_aside_menu > ul > li:nth-child(1) > a > i').should('exist');
+})
+Cypress.Commands.add('verificarVendas', ()=>{
+  cy.get('#kt_aside_menu > ul > li:nth-child(2) > a > i').should('exist');
+})
+Cypress.Commands.add('verificarPagamentos', ()=>{
+  cy.get('#kt_aside_menu > ul > li:nth-child(3) > a > i').should('exist');
+})
+Cypress.Commands.add('verificarTaxa', ()=>{
+  cy.get('#kt_aside_menu > ul > li:nth-child(4) > a > i').should('exist');
+})
+Cypress.Commands.add('verificarBanco', ()=>{
+  cy.get('#kt_aside_menu > ul > li:nth-child(5) > a > i').should('exist');
+})
+Cypress.Commands.add('verificarAdministrativo',()=>{
+  cy.get('#kt_aside_menu > ul > li:nth-child(6) > a > i').should('exist');
+})
+Cypress.Commands.add('verificarCadastro',()=>{
+  cy.get('#kt_aside_menu > ul > li:nth-child(7) > a > i').should('exist');
+})
+Cypress.Commands.add('verificarSegurança',()=>{
+  cy.get('#kt_aside_menu > ul > li:nth-child(8) > a > i').should('exist');
+})
+Cypress.Commands.add('verificarComercial',()=>{
+  cy.get('#kt_aside_menu > ul > li:nth-child(9) > a > i').should('exist');
+})
+Cypress.Commands.add('verificarRefo',()=>{
+  cy.get('#dropDownSearch').should('exist');
+  cy.get('#dateRangePicker').should('exist');
+  cy.get('#containerAjuda > div.kt-header__topbar-wrapper > span > i').should('exist');
+  cy.get('#containerNotificacoes > div.kt-header__topbar-wrapper > span.kt-header__topbar-icon.kt-header__topbar-icon--success > i').should('exist');
+  cy.get('#kt_header > div > div > div.topBarItensContainer.topBarUserContainer > div.kt-header__topbar-item.kt-header__topbar-item--user > div.kt-header__topbar-wrapper > span > i').should('exist');
+  cy.get('#md-app-widget > div.md-chat-widget-btn-container').should('exist');
+  cy.get('#dropDownSwitchType').should('exist');
+  cy.get('#btnApply > span').should('exist');
+})
+Cypress.Commands.add('validarTela',()=>{
+  cy.paginaCarregada();
+      cy.verificarDashboard();
+      cy.verificarVendas();
+      cy.verificarPagamentos();
+      cy.verificarTaxa();
+      cy.verificarBanco();
+      cy.verificarAdministrativo();
+      cy.verificarCadastro();
+      cy.verificarSegurança();
+      cy.verificarComercial();
+      cy.verificarRefo();
 })

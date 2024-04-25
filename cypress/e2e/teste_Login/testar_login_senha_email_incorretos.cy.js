@@ -5,6 +5,7 @@ describe('Teste de login com senha e email incorretos, logo em seguida inserir l
     cy.errorPopup();
     cy.selecionarOKemSenhaIncorreta();
     cy.verificarElementosnaTela();
+    cy.esqueceuASenha();
     cy.loginCorreto();
     cy.paginaCarregada();
 
@@ -15,6 +16,7 @@ describe('Teste de login com senha e email incorretos, logo em seguida inserir l
     cy.errorPopup();
     cy.selecionarOKemSenhaIncorreta();
     cy.verificarElementosnaTela();
+    cy.esqueceuASenha();
     cy.loginCorreto();
     cy.paginaCarregada();
    
