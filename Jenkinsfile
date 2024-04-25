@@ -4,28 +4,31 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git 'https://github.com/S41T4M4/CypressTest.git'
+                
+                dir('C:\\Users\\vitor.reis\\CypressProject') {
+                    
+                }
             }
         }
         
         stage('Install dependencies') {
             steps {
+                
                 sh 'npm install'
             }
         }
         
         stage('Run tests') {
-            steps {
-                script {
-                    
-                    bat './node_modules/.bin/cypress run --headless'
-                }
+            steps {           
+                
+                sh './node_modules/.bin/cypress run --headless'
             }
         }
     }
     
     post {
         always {
+            
             sh 'npm uninstall cypress'
         }
     }
