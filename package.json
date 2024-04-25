@@ -5,12 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "cypress:runDefault":"cypress run --spec cypress/integration/pom/* .spec.js"
+    "cypress:runDefault": "cypress run --spec cypress/integration/pom/* .spec.js"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "cypress": "^13.8.1"
-  }
+  "license": "ISC"
 }

@@ -5,7 +5,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 dir('C:\\Users\\vitor.reis\\CypressProject') {
-                    
+                    // Aqui você pode adicionar passos adicionais de checkout, se necessário
                 }
             }
         }
@@ -21,7 +21,7 @@ pipeline {
         stage('Run tests') {
             steps {           
                 dir('C:\\Users\\vitor.reis\\CypressProject') {
-                    bat './node_modules/.bin/cypress run --headless'
+                    bat 'C:\\Users\\vitor.reis\\AppData\\Local\\Cypress\\Cache\\13.8.1\\Cypress\\cypress run --headless'
                 }
             }
         }
@@ -30,7 +30,6 @@ pipeline {
     post {
         always {
             dir('C:\\Users\\vitor.reis\\CypressProject') {
-               
                 bat 'npm uninstall cypress'
             }
         }
