@@ -21,7 +21,7 @@ pipeline {
         stage('Run tests') {
             steps {           
                 dir('C:\\Users\\vitor.reis\\CypressProject') {
-                    bat 'C:\\Users\\vitor.reis\\CypressProject\\cypress run --headless'
+                    bat 'C:\\Users\\vitor.reis\\CypressProject\\cypress run '
                 }
             }
         }
