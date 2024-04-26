@@ -1,38 +1,38 @@
 pipeline {
     agent any
-     tools {nodejs "Node22"}
+
+    tools {
+
+        nodejs "nodejs22"
+    }
 
     stages {
         stage('Checkout') {
             steps {
-                dir('C:\\Users\\vitor.reis\\CypressProject') {
-                    
-                }
+        
+                git 'https://github.com/S41T4M4/CypressTest.git'
             }
         }
-        
+
         stage('Install dependencies') {
             steps {
-                dir('C:\\Users\\vitor.reis\\CypressProject') {
-                    bat 'npm install'
-                }
+ 
+                bat 'npm install'
             }
         }
-        
+
         stage('Run tests') {
-            steps {           
-                dir('C:\\Users\\vitor.reis\\CypressProject') {
-                    bat 'npx cypress run'
-                }
+            steps {
+       
+                bat 'npx cypress run'
             }
         }
     }
-    
+
     post {
         always {
-            dir('C:\\Users\\vitor.reis\\CypressProject') {
-                bat 'npm uninstall cypress'
-            }
+        
+            bat 'npm uninstall cypress'
         }
     }
 }

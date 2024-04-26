@@ -6,7 +6,7 @@ Cypress.Commands.add('login',(url,email,senha)=>{
   cy.get('#btnLogin').click();
 })
 
-Cypress.Commands.add('errorPopup',()=>{
+Cypress.Commands.add('validarPopupErro',()=>{
   cy.get('#swal2-title').contains('Erro');
 })
 
@@ -23,15 +23,15 @@ Cypress.Commands.add('emailErrado',(url)=>{
   cy.login(url,"testesautatizados@conciliadora.com.br","Teste123");
 })
 
-Cypress.Commands.add('loginIncorreto', (url)=>{
+Cypress.Commands.add('realizarLoginIncorreto', (url)=>{
   cy.login(url,"testesautzados@conciliadora.com.br","Tste123");
 })
 
-Cypress.Commands.add('selecionarOKemSenhaIncorreta',()=>{
+Cypress.Commands.add('selecionarOKemPopupErro',()=>{
   cy.get('body > div.swal2-container.swal2-center.swal2-backdrop-show > div > div.swal2-actions > button.swal2-confirm.swal2-styled').click();
 })
 
-Cypress.Commands.add('loginCorreto',()=>{
+Cypress.Commands.add('realizarLoginCorreto',()=>{
   cy.get('#password').clear();
   cy.get('#password').clear();
   cy.get('#login').clear();
