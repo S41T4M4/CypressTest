@@ -3,7 +3,7 @@ describe('Teste para validar tela Dashboard', () => {
   // Acessar site intranet e executar o login 
   cy.logarSite('https://intranet-hom.conciliadora.com.br/Login/');
 
-  //Entrando na tela : DASHBOARD GERENCIAL
+  //Entrando na tela : Dashboard Gerencial
   //Primeira ação: Selecionar Refo
   cy.selecionarRefo('33292');
 
