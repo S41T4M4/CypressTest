@@ -7,9 +7,9 @@ describe('Teste de login com senha e email incorretos, logo em seguida inserir l
     cy.validarPopupErro();
     cy.selecionarOKemPopupErro();
     cy.verificarElementosnaTela();
-    cy.esqueceuaSenha();
-    
+    cy.esqueceuaSenha();    
     cy.realizarLoginCorreto();
     cy.validarTela();
+    cy.validarMenuSuspenso();
   });
 });

@@ -7,7 +7,7 @@ Cypress.Commands.add('login',(url,email,senha)=>{
 })
 
 Cypress.Commands.add('validarPopupErro',()=>{
-  cy.get('#swal2-title').contains('Erro');
+  cy.get('#swal2-content').contains('E-mail ou senha incorretos!');
 })
 
 Cypress.Commands.add('verificarElementosnaTela', ()=>{
@@ -82,7 +82,7 @@ Cypress.Commands.add('verificarComercial',()=>{
   cy.get('#kt_aside_menu > ul > li:nth-child(9) > a > i').should('exist');
 })
 
-Cypress.Commands.add('verificarRefo',()=>{
+Cypress.Commands.add('validarMenuSuspenso',()=>{
   cy.get('#dropDownSearch').should('exist');
   cy.get('#dateRangePicker').should('exist');
   cy.get('#containerAjuda > div.kt-header__topbar-wrapper > span > i').should('exist');
@@ -104,5 +104,5 @@ Cypress.Commands.add('validarTela',()=>{
       cy.verificarCadastro();
       cy.verificarSegurança();
       cy.verificarComercial();
-      cy.verificarRefo();
+      cy.validarMenuSuspenso();
 })
