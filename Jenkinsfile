@@ -9,14 +9,14 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo "Buiding application"
+                echo "Building application"
             }
         }
 
         stage('Testing') {
             steps {
                 script {
-                    bat "npm i"
+                    bat "yarn install" // Instalação das dependências com Yarn
                     bat "npx cypress run --browser ${params.BROWSER} --spec ${params.SPEC}"
                 }
             }
