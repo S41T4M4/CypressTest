@@ -1,7 +1,7 @@
 pipeline {
     agent any
      tools {nodejs: "nodejs22"}
-     
+
     parameters {
         string(name: "SPEC", defaultValue: "cypress/e2e/teste_login", description: "E.g.: cypress/e2e/teste_login/*.spec.js")
         choice(name: "BROWSER", choices: ['chrome', 'edge', 'firefox'], description: "Choose a browser to run the tests")
@@ -27,7 +27,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo "Deploying the application"
-                /
+                
             }
         }
     }
