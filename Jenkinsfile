@@ -18,20 +18,16 @@ pipeline {
             }
         }
 
-
         stage('Run tests') {
             steps {
                 bat 'npx cypress run'
             }
         }
-
-      
+    } 
 
     post {
         always {
-            
             bat 'npm uninstall cypress'
         }
     }
-}
 }
