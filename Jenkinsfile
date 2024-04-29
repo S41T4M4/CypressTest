@@ -9,14 +9,15 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo "Buiding application"
+                echo "Building application"
+                // Adicione aqui quaisquer etapas de construção necessárias
             }
         }
 
         stage('Testing') {
             steps {
+                echo "Running tests"
                 script {
-                    
                     bat "npx cypress run --browser ${params.BROWSER} --spec ${params.SPEC}"
                 }
             }
@@ -25,6 +26,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo "Deploying the application"
+                // Adicione aqui quaisquer etapas de implantação necessárias
             }
         }
     }
