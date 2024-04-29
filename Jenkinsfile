@@ -1,6 +1,8 @@
 pipeline {
     agent any
-     tools {nodejs: "nodejs22"}
+    tools {
+        nodejs "nodejs22"
+    }
 
     parameters {
         string(name: "SPEC", defaultValue: "cypress/e2e/teste_login", description: "E.g.: cypress/e2e/teste_login/*.spec.js")
@@ -11,7 +13,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo "Building application"
-            
+                
             }
         }
 
