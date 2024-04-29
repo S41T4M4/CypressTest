@@ -1,33 +1,29 @@
 pipeline {
     agent any
 
-    tools {
-        nodejs "nodejs22"
+    parameters {
+        string(name: "SPEC", defaultValue: "cypress/e2e/teste_login", description: "Ej: cypress/e2e/teste_login/*.cy.js")
+        choice(name: "BROWSER", choices: ['chrome', 'edge', 'firefox'], description: "Choose a browser to run the tests")
     }
 
     stages {
-        stage('Checkout') {
+        stage('Build') {
             steps {
-                git 'https://github.com/S41T4M4/CypressTest.git'
+                echo "Buiding application"
             }
         }
 
-        stage('Install dependencies') {
+        stage('Testing') {
             steps {
-                bat 'npm install'
+                bat "npm i"
+                bat "npx cypress run --browser ${BROWSER} --spec ${SPEC}"
             }
         }
 
-        stage('Run tests') {
+        stage('Deploy') {
             steps {
-                bat 'npx cypress run'
+                echo "Deploying the application"
             }
-        }
-    } 
-
-    post {
-        always {
-            bat 'npm uninstall cypress'
         }
     }
 }
