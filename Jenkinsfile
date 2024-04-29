@@ -1,8 +1,9 @@
 pipeline {
     agent any
-
+     tools {nodejs: "nodejs22"}
+     
     parameters {
-        string(name: "SPEC", defaultValue: "cypress/e2e/teste_login", description: "Ej: cypress/e2e/teste_login/*.spec.js")
+        string(name: "SPEC", defaultValue: "cypress/e2e/teste_login", description: "E.g.: cypress/e2e/teste_login/*.spec.js")
         choice(name: "BROWSER", choices: ['chrome', 'edge', 'firefox'], description: "Choose a browser to run the tests")
     }
 
@@ -10,23 +11,23 @@ pipeline {
         stage('Build') {
             steps {
                 echo "Building application"
-                // Adicione aqui quaisquer etapas de construção necessárias
+            
             }
         }
 
         stage('Testing') {
             steps {
                 echo "Running tests"
-                script {
-                    bat "npx cypress run --browser ${params.BROWSER} --spec ${params.SPEC}"
-                }
+                sh label: 'NPM install', script: 'npm install'
+                sh label: 'NPM start', script: 'npm start'
+                sh label: 'Cypress Run', script: 'npx cypress run'
             }
         }
 
         stage('Deploy') {
             steps {
                 echo "Deploying the application"
-                // Adicione aqui quaisquer etapas de implantação necessárias
+                /
             }
         }
     }
