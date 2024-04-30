@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     parameters {
-        string(name: "SPEC", defaultValue: "cypress/e2e/teste_login/*.cy.js", description: "E.g.: cypress/e2e/teste_login/*.cy.js")
+        string(name: "SPEC", defaultValue: "C:\\Users\\vitor.reis\\CypressProject\\cypress\\e2e\\teste_login\\testar_email_incorreto.cy.js", description: "Path to the test spec file")
         choice(name: "BROWSER", choices: ['chrome', 'edge', 'firefox'], description: "Choose a browser to run the tests")
     }
 
