@@ -5,24 +5,17 @@ pipeline {
     }
 
     parameters {
-        string(name: "SPEC", defaultValue: "cypress/e2e/teste_login", description: "E.g.: cypress/e2e/teste_login/*.spec.js")
+        string(name: "SPEC", defaultValue: "cypress/e2e/teste_login", description: "E.g.: cypress/e2e/teste_login/*.cy.js")
         choice(name: "BROWSER", choices: ['chrome', 'edge', 'firefox'], description: "Choose a browser to run the tests")
     }
 
     stages {
-        stage('Build') {
-            steps {
-                echo "Building application"
-                
-            }
-        }
-
         stage('Testing') {
             steps {
                 echo "Running tests"
-                sh label: 'NPM install', script: 'npm install'
-                sh label: 'NPM start', script: 'npm start'
-                sh label: 'Cypress Run', script: 'npx cypress run'
+                sh : 'NPM install', script: 'npm install'
+                sh : 'NPM start', script: 'npm start'
+                sh: 'Cypress Run', script: 'npx cypress run'
             }
         }
 
