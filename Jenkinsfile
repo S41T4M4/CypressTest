@@ -13,9 +13,9 @@ pipeline {
         stage('Testing') {
             steps {
                 echo "Running tests"
-                sh : 'NPM install', script: 'npm install'
-                sh : 'NPM start', script: 'npm start'
-                sh: 'Cypress Run', script: 'npx cypress run'
+                bat label: 'NPM install', script: 'npm install'
+                bat label: 'NPM start', script: 'npm start'
+                bat label: 'Cypress Run', script: 'npx cypress run'
             }
         }
 
