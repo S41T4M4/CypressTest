@@ -20,22 +20,22 @@ pipeline {
         stage('Building') {
             steps {
                 echo "Building the application"
-                bat "npm i" 
+                bat "npm i"
             }
         }
 
         stage('Testing') {
             steps {
                 echo "Running tests"
-                bat "npx cypress run --browser=${params.BROWSER} --spec ${params.SPEC}/*.cy.js" 
+                bat "npx cypress run --browser=${params.BROWSER} --spec ${params.SPEC}"
             }
         }
 
         stage('Deploying') {
             steps {
                 echo "Deploy the application"
-                
             }
         }
     }
+
 }
