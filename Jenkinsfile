@@ -1,8 +1,6 @@
 pipeline {
+
     agent any
-    tools {
-        nodejs "nodejs22"
-    }
 
     parameters {
         string(name: "SPEC", defaultValue: "cypress/e2e/teste_login", description: "E.g.: cypress/e2e/teste_login/*.cy.js")
@@ -10,20 +8,30 @@ pipeline {
     }
 
     stages {
-        stage('Testing') {
+
+        stage('Clone the repo') {
             steps {
-                echo "Running tests"
-                bat label: 'NPM install', script: 'npm install'
-                bat label: 'NPM start', script: 'npm start'
-                bat label: 'Cypress Run', script: 'npx cypress run'
+                git branch: 'main', url: 'https://github.com/S41T4M4/CypressTest.git'
             }
         }
 
-        stage('Deploy') {
+        stage('Run the Cypress scenario tests') {
             steps {
-                echo "Deploying the application"
-                
+                script {
+                    sh """
+                    cd cypress &&
+                    npm install &&
+                    npx cypress run --browser ${params.BROWSER} --spec ${params.SPEC}
+                    """
+                }
             }
+        }
+
+    }
+
+    post {
+        always {
+            
         }
     }
 }
