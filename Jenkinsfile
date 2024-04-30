@@ -11,12 +11,6 @@ pipeline {
     }
 
     stages {
-        stage('Clone the repo') {
-            steps {
-                git branch: 'main', url: 'https://github.com/S41T4M4/CypressTest.git'
-            }
-        }
-
         stage('Building') {
             steps {
                 echo "Building the application"
