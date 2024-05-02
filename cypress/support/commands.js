@@ -47,7 +47,7 @@ Cypress.Commands.add('esqueceuaSenha',()=>{
 })
 
 Cypress.Commands.add('verificarDashboard',()=>{
-  cy.get('#kt_aside_menu > ul > li:nth-child(1) > a > i').should('exist');
+  cy.get('#kt_aside_menu > ul > li:nth-child) > a > i').should('exist');
 })
 
 Cypress.Commands.add('verificarVendas', ()=>{
