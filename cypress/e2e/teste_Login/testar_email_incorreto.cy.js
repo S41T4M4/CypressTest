@@ -1,6 +1,8 @@
 describe('Erro de Email', () => {
   it('Email incorreto', () => {    
-    //Teste: App.
+
+    //Test in url: [https://app-qas.conciliadora.com.br/] .
+    
     cy.emailErrado("https://app-qas.conciliadora.com.br/");
     cy.validarPopupErro();
     
