@@ -47,7 +47,7 @@ Cypress.Commands.add('esqueceuaSenha',()=>{
 })
 
 Cypress.Commands.add('verificarDashboard',()=>{
-  cy.get('#kt_aside_menu > ul > li:nth-child) > a > i').should('exist');
+  cy.get('#kt_aside_menu > ul > li:nth-child(1) > a > i').should('exist');
 })
 
 Cypress.Commands.add('verificarVendas', ()=>{
@@ -93,6 +93,10 @@ Cypress.Commands.add('validarMenuSuspenso',()=>{
   cy.get('#btnApply > span').should('exist');
 })
 
+Cypress.Commands.add('verificarCopyright',()=>{
+  cy.get('body > div.kt-grid.kt-grid--hor.kt-grid--root > span').contains('Copyright © 2022 - Aliança Tecnologia');
+})
+
 Cypress.Commands.add('validarTela',()=>{
       cy.paginaCarregada();
       cy.verificarDashboard();
@@ -105,4 +109,5 @@ Cypress.Commands.add('validarTela',()=>{
       cy.verificarSegurança();
       cy.verificarComercial();
       cy.validarMenuSuspenso();
+      cy.verificarCopyright();
 })
