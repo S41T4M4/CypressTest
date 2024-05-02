@@ -1,3 +1,2 @@
-import './Interagir'
 
 import'./commands'
