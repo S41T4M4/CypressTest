@@ -7,8 +7,8 @@ Este repositório contém testes automáticos para o aplicativo [app-qas.concili
 Para executar os testes, é necessario:
 
 1. Possuir o [Node.js] instalado em seu sistema.
-3. Instalar as dependências do projeto executando `npm install` no diretório do projeto.
-4. Execute os testes com o comando `npx cypress run`.
+2. Instalar as dependências do projeto executando `npm install cypress --save-dev ` no diretório do projeto.
+3. Execute os testes com o comando `npx cypress run`.
 
 Os testes serão executados pelo Cypress, abrindo um navegador automatizado que interagirá com o aplicativo, executando os cenários de teste definidos.
 
