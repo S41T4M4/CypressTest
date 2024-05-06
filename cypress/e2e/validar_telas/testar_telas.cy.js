@@ -61,23 +61,25 @@ describe('Validar telas', ()=>{
     cy.entrarPrevisaodeRecebimentos();
     cy.selecionarRefo('Empresa Modelo');
     cy.selecionarCalendario();
+    cy.validarPrevisaodeRecebimentos();
+    cy.validarUploadsPrevisaodeRecebimentos();
 
     // 3.3 > Previsao de recebimentos Sintetico
     cy.entrarPagamentos();
     cy.entrarPrevisaodeRecebimentosSintetico();
     cy.selecionarRefo('Empresa Modelo');
     cy.selecionarCalendario();
-
-    // 3.4 > Pagamentos a receber
-
-
-    // 3.5 > Pagamentos por conta bancaria 
+    cy.validarPrevisaodeRecebimentosSintetico();
+    cy.validarUploadsPrevisaodeRecebimentosSintetico();
+    
+    // 3.4 > Pagamentos por conta bancaria 
     cy.entrarPagamentos();
     cy.entrarPagamentosporContaBancaria();
     cy.selecionarRefo('Empresa Modelo');
     cy.selecionarCalendario();
+    cy.validarUploadsPagamentosporContaBancaria();
 
-    // 3.6 > Relatorio de baixa
+    // 3.5 > Relatorio de baixa
     cy.entrarPagamentos();
     cy.entrarRelatoriodeBaixa();
     cy.selecionarRefo('Empresa Modelo');
@@ -88,10 +90,16 @@ describe('Validar telas', ()=>{
     // 4.1 > Relatorio de taxas
     cy.entrarTaxa();
     cy.entrarRelatoriodeTaxas();
+    cy.selecionarRefo('Empresa Modelo');
+    cy.selecionarCalendario();
+    cy.validarUploadsConciliacaodeTaxas();
+
  
     // 5 > Banco
     // 5.1 > Conciliacao Bancaria
     cy.entrarBanco();
     cy.entrarConciliacaoBancaria();
+    cy.selecionarRefoConciliacaoBancaria('Posto Modelo');
+    cy.selecionarCalendario();
   })
 })

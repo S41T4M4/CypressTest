@@ -328,7 +328,7 @@ Cypress.Commands.add('validaUploadsVendasOperadoras',()=>{
 
 Cypress.Commands.add('entrarAuditoriadeVendas',()=>{
   cy.get('#kt_aside_menu > ul > li:nth-child(2) > div > ul > li:nth-child(4) > a > span').click();
-  cy.wait(7000);
+  cy.wait(20000);
 })
 Cypress.Commands.add('validarVendaBrutaAuditoriadeVendas',()=>{
   cy.get('#VendaBruta > div > div.kt-widget24__details.cardDetails > span').contains('R$ 201.035,48');
@@ -438,21 +438,44 @@ Cypress.Commands.add('validarPagamentosConfirmados',()=>{
 
 
 
-Cypress.Commands.add('entrarDebitosConfirmados',()=>{
-  cy.get('#kt_aside_menu > ul > li:nth-child(3) > div > ul > li:nth-child(2) > a > span').click();
-})
+
 Cypress.Commands.add('entrarPrevisaodeRecebimentos',()=>{
   cy.get('#kt_aside_menu > ul > li:nth-child(3) > div > ul > li:nth-child(3) > a > span').click();
 })
+Cypress.Commands.add('validarPrevisaodeRecebimentos',()=>{
+  cy.get('#Atrasado > div > div.kt-widget24__details.cardDetails > span').contains('R$ 5,93');
+  cy.get('#AReceber > div > div.kt-widget24__details.cardDetails > span').contains('R$ 5,93');
+})
+Cypress.Commands.add('validarUploadsPrevisaodeRecebimentos',()=>{
+  cy.get('#gridPrincipal > div > div.dx-datagrid-header-panel > div > div > div.dx-toolbar-after > div:nth-child(4) > div > div > div > i').click();
+  cy.get('#gridPrincipal > div > div.dx-datagrid-header-panel > div > div > div.dx-toolbar-after > div:nth-child(5) > div > div > div > i').click();
+})
+
+
+
+
 Cypress.Commands.add('entrarPrevisaodeRecebimentosSintetico',()=>{
   cy.get('#kt_aside_menu > ul > li:nth-child(3) > div > ul > li:nth-child(4) > a > span').click();
 })
-Cypress.Commands.add('entrarPagamentosaReceber',()=>{
-  cy.get('#kt_aside_menu > ul > li:nth-child(3) > div > ul > li:nth-child(5) > a > span').click();
+Cypress.Commands.add('validarPrevisaodeRecebimentosSintetico',()=>{
+  cy.get('#Atrasado > div > div.kt-widget24__details.cardDetails > span').contains('R$ 5,93');
+  cy.get('#AReceber > div > div.kt-widget24__details.cardDetails > span').contains('R$ 5,93');
 })
+Cypress.Commands.add('validarUploadsPrevisaodeRecebimentosSintetico',()=>{
+  cy.get('#gridPrincipal > div > div.dx-datagrid-header-panel > div > div > div.dx-toolbar-after > div:nth-child(4) > div > div > div > i').click();
+  cy.get('#gridPrincipal > div > div.dx-datagrid-header-panel > div > div > div.dx-toolbar-after > div:nth-child(5) > div > div > div').click();
+})
+
+
 Cypress.Commands.add('entrarPagamentosporContaBancaria',()=>{
   cy.get('#kt_aside_menu > ul > li:nth-child(3) > div > ul > li:nth-child(6) > a > span').click();
 })
+Cypress.Commands.add('validarUploadsPagamentosporContaBancaria',()=>{
+  cy.get('#gridPrincipal > div > div.dx-datagrid-header-panel > div > div > div.dx-toolbar-after > div:nth-child(4) > div > div > div > i').click();
+  cy.get('#gridPrincipal > div > div.dx-datagrid-header-panel > div > div > div.dx-toolbar-after > div:nth-child(5) > div > div > div > i').click();
+})
+
+
 Cypress.Commands.add('entrarRelatoriodeBaixa',()=>{
   cy.get('#kt_aside_menu > ul > li:nth-child(3) > div > ul > li:nth-child(7) > a > span').click();
 })
@@ -465,6 +488,11 @@ Cypress.Commands.add('entrarTaxa',()=>{
 Cypress.Commands.add('entrarRelatoriodeTaxas',()=>{
   cy.get('#kt_aside_menu > ul > li:nth-child(4) > div > ul > li:nth-child(2) > a > span').click();
 })
+Cypress.Commands.add('validarUploadsConciliacaodeTaxas',()=>{
+  cy.get('#gridPrincipal > div > div.dx-datagrid-header-panel > div > div > div.dx-toolbar-after > div:nth-child(4) > div > div > div > i').click();
+  cy.get('#gridPrincipal > div > div.dx-datagrid-header-panel > div > div > div.dx-toolbar-after > div:nth-child(5) > div > div > div > i').click();
+})
+
 
 //Tela Banco
 Cypress.Commands.add('entrarBanco',()=>{
@@ -473,3 +501,9 @@ Cypress.Commands.add('entrarBanco',()=>{
 Cypress.Commands.add('entrarConciliacaoBancaria',()=>{
   cy.get('#kt_aside_menu > ul > li:nth-child(6) > div > ul > li > a > span').click();
 })
+Cypress.Commands.add('selecionarRefoConciliacaoBancaria', (valorInserido) => {
+  cy.get('#dropDownSearch > div.dx-dropdowneditor-input-wrapper.dx-selectbox-container > div > div.dx-texteditor-buttons-container > span > span').click();
+  cy.wait(1000);
+  cy.get('#dropDownSearch > div.dx-dropdowneditor-input-wrapper.dx-selectbox-container > div > div.dx-texteditor-input-container > input').click();
+  cy.get('#dropDownSearch > div.dx-dropdowneditor-input-wrapper.dx-selectbox-container > div > div.dx-texteditor-input-container > input') .type(valorInserido).wait(1000).type('{enter}');
+});
