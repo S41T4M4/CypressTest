@@ -41,8 +41,9 @@ describe('Validar telas', ()=>{
     // 2.4 > Auditoria de Vendas
     cy.entrarVendas();
     cy.entrarAuditoriadeVendas();
-    cy.selecionarRefo('Empresa Modelo');
-    cy.selecionarCalendario();
+ //cy.selecionarRefo('Empresa Modelo');
+   // cy.selecionarCalendario();
+   cy.get('#btnApply > span').click();
     cy.validarAuditoriadeVendas();
     cy.validarUploadsAuditoriadeVendas();
 

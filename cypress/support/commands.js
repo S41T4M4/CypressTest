@@ -328,7 +328,7 @@ Cypress.Commands.add('validaUploadsVendasOperadoras',()=>{
 
 Cypress.Commands.add('entrarAuditoriadeVendas',()=>{
   cy.get('#kt_aside_menu > ul > li:nth-child(2) > div > ul > li:nth-child(4) > a > span').click();
-  cy.wait(20000);
+  
 })
 Cypress.Commands.add('validarVendaBrutaAuditoriadeVendas',()=>{
   cy.get('#VendaBruta > div > div.kt-widget24__details.cardDetails > span').contains('R$ 201.035,48');
