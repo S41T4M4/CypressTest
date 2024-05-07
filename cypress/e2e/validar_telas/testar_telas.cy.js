@@ -4,15 +4,19 @@ describe('Validar telas', ()=>{
     cy.logarSite('https://app.conciliadora.com.br');
     cy.validarTela();
 
+
     // 1 > Dashboard 
     // 1.1 > Dashboard Gerencial
+   it('validarDashboardGerencial',()=>{
+
     cy.entrarDashboard();
     cy.entrarDashboardGerencial();
     cy.selecionarRefo('Empresa Modelo');
     cy.selecionarCalendario();
     cy.validarDashboard();
     cy.validarUploadsDashboardGerencial();
-
+   }) 
+   
 
     // 2 > Vendas
     // 2.1 > Conferencia de vendas
@@ -39,13 +43,13 @@ describe('Validar telas', ()=>{
     cy.validaUploadsVendasOperadoras();
     
     // 2.4 > Auditoria de Vendas
-  //  cy.entrarVendas();
-  //  cy.entrarAuditoriadeVendas();
- //cy.selecionarRefo('Empresa Modelo');
-   // cy.selecionarCalendario();
-  // cy.get('#btnApply > span').click();
-  //  cy.validarAuditoriadeVendas();
-  //  cy.validarUploadsAuditoriadeVendas();
+    cy.entrarVendas();
+    cy.entrarAuditoriadeVendas();
+    cy.selecionarRefo('Empresa Modelo');
+    cy.selecionarCalendario();
+    cy.get('#btnApply > span').click();
+    cy.validarAuditoriadeVendas();
+    cy.validarUploadsAuditoriadeVendas();
 
     
     // 3 > Pagamentos
