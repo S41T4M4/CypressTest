@@ -25,7 +25,9 @@ Cypress.Commands.add('selecionarRefo', (valorInserido) => {
 
 
 Cypress.Commands.add('selecionarCalendario', ()=> {
+ 
   cy.get('#dateRangePicker').click();  
+  cy.wait(1000);
   cy.get('select.yearselect').eq(0).select('2023'); 
   cy.get('select.monthselect').eq(0).select('Setembro');
   cy.get('body > div.daterangepicker.ltr.auto-apply.show-ranges.show-calendar.opensright > div.drp-calendar.left > div.calendar-table > table > tbody > tr:nth-child(1) > td:nth-child(5)').click(); 
