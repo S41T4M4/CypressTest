@@ -75,7 +75,7 @@ describe('Validar telas', () => {
     // 3.3 > Previsao de recebimentos Sintetico
     cy.entrarPagamentos();
     cy.entrarPrevisaodeRecebimentosSintetico();
-    //cy.selecionarRefo('Empresa Modelo');
+     cy.selecionarRefo('Empresa Modelo');
     cy.selecionarCalendario();
     cy.validarPrevisaodeRecebimentosSintetico();
     cy.validarUploadsPrevisaodeRecebimentosSintetico();
