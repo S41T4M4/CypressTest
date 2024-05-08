@@ -8,6 +8,7 @@ describe('Validar telas', () => {
   // 1 > Dashboard 
   it('validarDashboard', () => {
     // 1.1 > Dashboard Gerencial
+    
     cy.logarSite('https://app.conciliadora.com.br');
     cy.entrarDashboard();
     cy.entrarDashboardGerencial();
@@ -15,6 +16,7 @@ describe('Validar telas', () => {
     cy.selecionarCalendario();
     cy.validarDashboard();
     cy.validarUploadsDashboardGerencial();
+
   });
 
   // 2 > Vendas

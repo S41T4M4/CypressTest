@@ -198,6 +198,8 @@ Cypress.Commands.add('validarTransaçõesVendasDashboard',()=>{
 Cypress.Commands.add('validarValorDashboard',()=>{
   cy.get('#gridTaxa > div > div.dx-datagrid-total-footer.dx-datagrid-nowrap > div > table > tbody > tr > td:nth-child(5) > div').contains('127.811,42');
 })
+
+
 Cypress.Commands.add('validarDashboard',()=>{
   cy.validarTotalVendasDashboard();
   cy.validarPagamentosDashboard();
@@ -528,4 +530,11 @@ Cypress.Commands.add('validarConferenciaBancaria',()=>{
   cy.get('#card-detalhes-banco > div:nth-child(3) > div > div.kt-widget24__details > div.bancariaPrevisto > span.kt-widget24__stats.kt-font-brand.bancariaValorPrevisto').contains('R$ 128.770,14');
   cy.get('#card-detalhes-banco > div:nth-child(4) > div > div.kt-widget24__details > div.bancariaPrevisto > span.kt-widget24__stats.kt-font-brand.bancariaValorPrevisto').contains('R$ 64.118,80');
   cy.get('#bancoSemDomicilioIcon0').should('be.visible');
+  cy.get('#btnSwitchOperadora > span').click();
+  cy.get('#btnUploadBancaria').click();
+  cy.get('#modal-header > button').click();
+})
+Cypress.Commands.add('validarUploadsConciliacaobancaria',()=>{
+  cy.get('#gridPrincipal > div > div.dx-datagrid-header-panel > div > div > div.dx-toolbar-after > div:nth-child(4) > div > div > div > i').click();
+  cy.get('#gridPrincipal > div > div.dx-datagrid-header-panel > div > div > div.dx-toolbar-after > div:nth-child(5) > div > div > div > i').click();
 })
