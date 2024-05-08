@@ -20,7 +20,7 @@ pipeline {
 
         stage('Testing') {
             steps {
-                echo "Running tests"
+                echo "Running tests with params"
                 bat "npx cypress run --browser=${params.BROWSER} --spec=${params.SPEC}"
             }
         }
