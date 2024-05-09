@@ -611,7 +611,7 @@ Cypress.Commands.add('validarConferenciaBancaria',()=>{
   cy.validarCard2();
   cy.validarCard3();
   cy.validarCard4();
-  cy.validarIfIconesAppear();
+  cy.validarIcones();
   cy.validarIconeAdquirente();
   cy.validarIconeUpload();
 })
