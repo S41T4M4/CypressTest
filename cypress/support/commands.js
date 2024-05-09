@@ -603,6 +603,7 @@ Cypress.Commands.add('validarIconeAdquirente',()=>{
 })
 Cypress.Commands.add('validarIconeUpload',()=>{ 
   cy.get('#btnUploadBancaria').click();
+  cy.wait(2000);
   cy.get('#modal-header > button').click();
 })
 Cypress.Commands.add('validarConferenciaBancaria',()=>{
