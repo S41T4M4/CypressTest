@@ -1,5 +1,4 @@
-describe('Validar telas', () => {
- 
+describe('Validar telas em [https://app.conciliadora.com.br].', () => {
   // 1 > Dashboard 
   it('Validar tela Dashboard', () => {
     // 1.1 > Dashboard Gerencial
@@ -45,11 +44,9 @@ describe('Validar telas', () => {
     cy.entrarAuditoriadeVendas();
     cy.selecionarRefo('Empresa Modelo');
     cy.selecionarCalendario();
-    cy.get('#btnApply > span').click();
     cy.validarAuditoriadeVendas();
     cy.validarUploadsAuditoriadeVendas();
     cy.deslogar();
-
   });
 
   // 3 > Pagamentos
@@ -91,7 +88,6 @@ describe('Validar telas', () => {
     cy.selecionarRefo('Empresa Modelo');
     cy.selecionarCalendario();
     cy.deslogar();
-
   });
   // 4 > Taxa
   it('Validar tela Taxa', () => {
@@ -114,6 +110,7 @@ describe('Validar telas', () => {
     cy.entrarConciliacaoBancaria();
     cy.selecionarRefoConciliacaoBancaria('Posto Modelo');
     cy.selecionarCalendario();
+    cy.validarUploadsConciliacaobancaria();
     cy.validarConferenciaBancaria();
     cy.deslogar();
 
