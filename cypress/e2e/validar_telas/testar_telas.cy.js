@@ -21,7 +21,7 @@ describe('Validar telas em [https://app.conciliadora.com.br].', () => {
     cy.entrarConferenciadeVendas();
     cy.selecionarRefoCv('Empresa Modelo');
     cy.selecionarCalendarioCv();
-    cy.validarValorBruto();
+    cy.validarValorBrutoCv();
 
     // 2.2 > Vendas Sistemas
     cy.entrarVendas();
