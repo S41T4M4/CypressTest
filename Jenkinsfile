@@ -8,7 +8,6 @@ pipeline {
 
     options {
         ansiColor('xterm')
-        encoding('UTF-8') 
     }
 
     stages {
@@ -22,7 +21,7 @@ pipeline {
         stage('Testing') {
             steps {
                 echo "Running tests with params"
-                bat "npx cypress run --browser=${params.BROWSER} --spec=${params.SPEC}"
+                bat "npx cypress run --browser=${params.BROWSER} --spec=${params.SPEC} --encoding utf-8"
             }
         }
 
