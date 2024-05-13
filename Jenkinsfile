@@ -8,6 +8,7 @@ pipeline {
 
     options {
         ansiColor('xterm')
+        encoding('UTF-8') 
     }
 
     stages {
