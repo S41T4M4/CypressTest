@@ -1,0 +1,4 @@
+validar card cv 
+validar vendas sistemas registros nao enviados (clicar no card nao enviados)
+validar se o valor que está acima aprece em baixo corretamente 
+

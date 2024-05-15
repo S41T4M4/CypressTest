@@ -22,6 +22,7 @@ describe('Validar telas em [https://app.conciliadora.com.br].', () => {
     cy.selecionarRefoCv('Empresa Modelo');
     cy.selecionarCalendarioCv();
     cy.validarValorBrutoCv();
+    cy.validarcardValeCard();
 
     // 2.2 > Vendas Sistemas
     cy.entrarVendas();
@@ -102,7 +103,7 @@ describe('Validar telas em [https://app.conciliadora.com.br].', () => {
 
   });
 
-  // 5 > Banco
+  // 5 > Banco  
   it('Validar tela Banco', () => {
     // 5.1 > Conciliacao Bancaria
     cy.logarSite('https://app.conciliadora.com.br');

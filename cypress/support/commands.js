@@ -251,6 +251,11 @@ Cypress.Commands.add('selecionarCalendarioCv',()=>{
 Cypress.Commands.add('validarValorBrutoCv',()=>{
   cy.get('#valorBruto > span').contains('Valor Bruto: R$ 2.255,20');
 })
+Cypress.Commands.add('validarcardValeCard',()=>{
+  cy.get('#tabAdq > div.dx-tabs-scrollable.dx-scrollable.dx-visibility-change-handler.dx-scrollable-horizontal.dx-scrollable-simulated > div > div > div.dx-scrollable-content > div > div:nth-child(22)').click();
+  cy.get('#tabTerminal > div > div > div.kt-widget24__details > span').contains('R$ 2.255,20');
+
+})
 
 
 
@@ -260,28 +265,39 @@ Cypress.Commands.add('entrarVendasSistemas',()=>{
 })
 Cypress.Commands.add('validarEnviadas',()=>{
   cy.get('#Enviadas > div > div.kt-widget24__details.cardDetails > span').contains('R$ 4.368,04').click();
+  cy.get('#gridPrincipal > div > div.dx-datagrid-total-footer.dx-datagrid-nowrap > div > table > tbody > tr > td:nth-child(9) > div').contains('4.368,04');
+  cy.get('#gridPrincipal > div > div.dx-datagrid-total-footer.dx-datagrid-nowrap > div > table > tbody > tr > td:nth-child(11) > div').contains('400,60');
+  cy.get('#gridPrincipal > div > div.dx-datagrid-total-footer.dx-datagrid-nowrap > div > table > tbody > tr > td:nth-child(20) > div').contains('27,51');
 })
 Cypress.Commands.add('validarCorretas',()=>{
   cy.get('#Corretas > div > div.kt-widget24__details.cardDetails > span').contains('R$ 0,00').click();
 })
 Cypress.Commands.add('validarDivergentes',()=>{
   cy.get('#Divergentes > div > div.kt-widget24__details.cardDetails > span').contains('R$ 29,70').click();
+  cy.get('#gridPrincipal > div > div.dx-datagrid-total-footer.dx-datagrid-nowrap > div > table > tbody > tr > td:nth-child(9) > div').contains('29,70');
+  cy.get('#gridPrincipal > div > div.dx-datagrid-total-footer.dx-datagrid-nowrap > div > table > tbody > tr > td:nth-child(20) > div').contains('27,51');
 })
 Cypress.Commands.add('validarNaoConciliadas',()=>{
   cy.get('#NaoConciliadas > div > div.kt-widget24__details.cardDetails > span').contains('R$ 0,00').click();
 })
 Cypress.Commands.add('validarNaoEncontradas',()=>{
   cy.get('#NaoEncontradas > div > div.kt-widget24__details.cardDetails > span').contains('R$ 4.338,34').click();
+  cy.get('#gridPrincipal > div > div.dx-datagrid-total-footer.dx-datagrid-nowrap > div > table > tbody > tr > td:nth-child(9) > div').contains('4.338,34');
+  cy.get('#gridPrincipal > div > div.dx-datagrid-total-footer.dx-datagrid-nowrap > div > table > tbody > tr > td:nth-child(11) > div').contains('400,60');
 })
 Cypress.Commands.add('validarVendaemDuplicidade',()=>{
   cy.get('#VendaEmDuplicidade > div > div.kt-widget24__details.cardDetails > span').contains('R$ 0,00').click();
 })
 Cypress.Commands.add('validarNaoEnviadas',()=>{
   cy.get('#NaoEnviadas > div > div.kt-widget24__details.cardDetails > span').contains('R$ 127.782,07').click();
+  cy.get('#gridSecundario > div > div.dx-datagrid-total-footer.dx-datagrid-nowrap > div > table > tbody > tr > td:nth-child(9) > div').contains('127.782,07');
+  cy.get('#gridSecundario > div > div.dx-datagrid-total-footer.dx-datagrid-nowrap > div > table > tbody > tr > td:nth-child(11) > div').contains('123.859,85');
+
 })
 Cypress.Commands.add('validarNaoEnviadasCanceladas',()=>{
   cy.get('#NaoEnviadasCanceladas > div > div.kt-widget24__details.cardDetails > span').contains('R$ 0,00').click();
 })
+
 Cypress.Commands.add('validarVendasSistemas',()=>{
   cy.validarEnviadas();
   cy.validarCorretas();
@@ -298,28 +314,42 @@ Cypress.Commands.add('validarUploadsVendasSistemas',()=>{
 })
 
 
-
 Cypress.Commands.add('entrarVendasOperadoras',()=>{
   cy.get('#kt_aside_menu > ul > li:nth-child(2) > div > ul > li:nth-child(3) > a > span').click();
   cy.wait(5000);
 })
 Cypress.Commands.add('validarVendasBrutas',()=>{
   cy.get('#VendasBrutas > div > div.kt-widget24__details.cardDetails > span').contains('R$ 127.811,42').click();
+  cy.get('#gridPrincipal > div > div.dx-datagrid-total-footer.dx-datagrid-nowrap > div > table > tbody > tr > td:nth-child(7) > div').contains('127.797,92');
+  cy.get('#gridPrincipal > div > div.dx-datagrid-total-footer.dx-datagrid-nowrap > div > table > tbody > tr > td:nth-child(9) > div').contains('3.924,05');
+  cy.get('#gridPrincipal > div > div.dx-datagrid-total-footer.dx-datagrid-nowrap > div > table > tbody > tr > td:nth-child(10) > div').contains('123.873,86');
+  cy.get('#gridPrincipal > div > div.dx-datagrid-total-footer.dx-datagrid-nowrap > div > table > tbody > tr > td:nth-child(24) > div').contains('123.793,29');
 })
 Cypress.Commands.add('validarTaxa',()=>{
   cy.get('#Taxa > div > div.kt-widget24__details.cardDetails > span').contains('R$ 3.924,05').click();
+  
 })
 Cypress.Commands.add('validarVendasLiquidas',()=>{
   cy.get('#VendasLiquidas > div > div.kt-widget24__details.cardDetails > span').contains('R$ 123.887,36').click();
+  cy.get('#gridPrincipal > div > div.dx-datagrid-total-footer.dx-datagrid-nowrap > div > table > tbody > tr > td:nth-child(7) > div').contains('127.811,42');
+  cy.get('#gridPrincipal > div > div.dx-datagrid-total-footer.dx-datagrid-nowrap > div > table > tbody > tr > td:nth-child(9) > div').contains('3.924,05');
+  cy.get('#gridPrincipal > div > div.dx-datagrid-total-footer.dx-datagrid-nowrap > div > table > tbody > tr > td:nth-child(10) > div').contains('123.887,36');
+  cy.get('#gridPrincipal > div > div.dx-datagrid-total-footer.dx-datagrid-nowrap > div > table > tbody > tr > td:nth-child(24) > div').contains('123.793,29');
 })
 Cypress.Commands.add('validarDebitos',()=>{
   cy.get('#Debitos > div > div.kt-widget24__details.cardDetails > span').contains('-R$ 13,50').click();
+  cy.get('#gridPrincipal > div > div.dx-datagrid-total-footer.dx-datagrid-nowrap > div > table > tbody > tr > td:nth-child(7) > div').contains('-13,50');
+  cy.get('#gridPrincipal > div > div.dx-datagrid-total-footer.dx-datagrid-nowrap > div > table > tbody > tr > td:nth-child(10) > div').contains('-13,50');
 })
 Cypress.Commands.add('validarRejeitados',()=>{
   cy.get('#Rejeitados > div > div.kt-widget24__details.cardDetails > span').contains('R$ 0,00').click();
 })
 Cypress.Commands.add('validarTotalLiquido',()=>{
   cy.get('#TotalLiquido > div > div.kt-widget24__details.cardDetails > span').contains('R$ 123.873,86').click();
+  cy.get('#gridPrincipal > div > div.dx-datagrid-total-footer.dx-datagrid-nowrap > div > table > tbody > tr > td:nth-child(7) > div').contains('127.797,92');
+  cy.get('#gridPrincipal > div > div.dx-datagrid-total-footer.dx-datagrid-nowrap > div > table > tbody > tr > td:nth-child(9) > div').contains('3.924,05');
+  cy.get('#gridPrincipal > div > div.dx-datagrid-total-footer.dx-datagrid-nowrap > div > table > tbody > tr > td:nth-child(10) > div').contains('123.873,86');
+  cy.get('#gridPrincipal > div > div.dx-datagrid-total-footer.dx-datagrid-nowrap > div > table > tbody > tr > td:nth-child(24) > div').contains('123.793,29');
 })
 Cypress.Commands.add('validarVendasOperadoras',()=>{
   cy.validarVendasBrutas();
@@ -342,6 +372,10 @@ Cypress.Commands.add('entrarAuditoriadeVendas',()=>{
 })
 Cypress.Commands.add('validarVendaBrutaAuditoriadeVendas',()=>{
   cy.get('#VendaBruta > div > div.kt-widget24__details.cardDetails > span').contains('R$ 201.035,48').click();
+  cy.get('#gridPrincipal > div > div.dx-datagrid-total-footer.dx-datagrid-nowrap > div > table > tbody > tr > td:nth-child(12) > div').contains('R$ 201.035,48');
+  cy.get('#gridPrincipal > div > div.dx-datagrid-total-footer.dx-datagrid-nowrap > div > table > tbody > tr > td:nth-child(14) > div').contains('R$ 194.974,15');
+  cy.get('#gridPrincipal > div > div.dx-datagrid-total-footer.dx-datagrid-nowrap > div > table > tbody > tr > td:nth-child(16) > div').contains('R$ 6.061,32');
+  cy.get('#gridPrincipal > div > div.dx-datagrid-total-footer.dx-datagrid-nowrap > div > table > tbody > tr > td:nth-child(17) > div').contains('R$ 194.842,58');
 })
 Cypress.Commands.add('validarTaxaAuditoriadeVendas',()=>{
   cy.get('#Taxa > div > div.kt-widget24__details.cardDetails > span').contains('R$ 6.061,32').click();
@@ -360,12 +394,20 @@ Cypress.Commands.add('validarRejeitadoAuditoriadeVendas',()=>{
 })
 Cypress.Commands.add('validarPagoAuditoriadeVendas',()=>{
   cy.get('#Pago > div > div.kt-widget24__details.cardDetails > span').contains('R$ 194.842,58').click();
+  cy.get('#gridPrincipal > div > div.dx-datagrid-total-footer.dx-datagrid-nowrap > div > table > tbody > tr > td:nth-child(12) > div').contains('R$ 200.895,65');
+  cy.get('#gridPrincipal > div > div.dx-datagrid-total-footer.dx-datagrid-nowrap > div > table > tbody > tr > td:nth-child(14) > div').contains('R$ 194.842,58');
+  cy.get('#gridPrincipal > div > div.dx-datagrid-total-footer.dx-datagrid-nowrap > div > table > tbody > tr > td:nth-child(16) > div').contains('R$ 6.053,05');
+  cy.get('#gridPrincipal > div > div.dx-datagrid-total-footer.dx-datagrid-nowrap > div > table > tbody > tr > td:nth-child(17) > div').contains('R$ 194.842,58');
 })
 Cypress.Commands.add('validarDivergenteAuditoriadeVendas',()=>{
   cy.get('#Divergente > div > div.kt-widget24__details.cardDetails > span').contains('R$ 0,00').click();
 })
 Cypress.Commands.add('validarAtrasadoAuditoriadeVendas',()=>{
   cy.get('#Atrasado > div > div.kt-widget24__details.cardDetails > span').contains('R$ 131,57').click();
+  cy.get('#gridPrincipal > div > div.dx-datagrid-total-footer.dx-datagrid-nowrap > div > table > tbody > tr > td:nth-child(12) > div').contains('R$ 139,83');
+  cy.get('#gridPrincipal > div > div.dx-datagrid-total-footer.dx-datagrid-nowrap > div > table > tbody > tr > td:nth-child(14) > div').contains('R$ 131,57');
+  cy.get('#gridPrincipal > div > div.dx-datagrid-total-footer.dx-datagrid-nowrap > div > table > tbody > tr > td:nth-child(16) > div').contains('R$ 8,26');
+
 })
 Cypress.Commands.add('validarCréditoAuditoriadeVendas',()=>{
   cy.get('#Credito > div > div.kt-widget24__details.cardDetails > span').contains('R$ 0,00').click();
@@ -409,6 +451,10 @@ Cypress.Commands.add('entrarPagamentosConfirmados',()=>{
 
 Cypress.Commands.add('validarVendaBrutaPagamentosConfirmados',()=>{
   cy.get('#VendasBrutas > div > div.kt-widget24__details.cardDetails > span').contains('R$ 155.098,37').click();
+  cy.get('#gridPrincipal > div > div.dx-datagrid-total-footer.dx-datagrid-nowrap > div > table > tbody > tr > td:nth-child(7) > div').contains('153.717,93');
+  cy.get('#gridPrincipal > div > div.dx-datagrid-total-footer.dx-datagrid-nowrap > div > table > tbody > tr > td:nth-child(9) > div').contains('6.476,03');
+  cy.get('#gridPrincipal > div > div.dx-datagrid-total-footer.dx-datagrid-nowrap > div > table > tbody > tr > td:nth-child(10) > div').contains('147.242,33');
+
 })
 Cypress.Commands.add('validarTaxaPagamentosConfirmados',()=>{
   cy.get('#Taxa > div > div.kt-widget24__details.cardDetails > span').contains('R$ 6.475,70').click();
@@ -421,18 +467,32 @@ Cypress.Commands.add('validarOperacoesPagamentosConfirmados',()=>{
 })
 Cypress.Commands.add('validarVendasPagasPagamentosConfirmados',()=>{
   cy.get('#VendasPagas > div > div.kt-widget24__details.cardDetails > span').contains('R$ 148.622,77').click();
+  cy.get('#gridPrincipal > div > div.dx-datagrid-total-footer.dx-datagrid-nowrap > div > table > tbody > tr > td:nth-child(7) > div').contains('155.098,37');
+  cy.get('#gridPrincipal > div > div.dx-datagrid-total-footer.dx-datagrid-nowrap > div > table > tbody > tr > td:nth-child(9) > div').contains('6.476,03');
+  cy.get('#gridPrincipal > div > div.dx-datagrid-total-footer.dx-datagrid-nowrap > div > table > tbody > tr > td:nth-child(10) > div').contains('148.622,77');
+
 })
 Cypress.Commands.add('validarVendasLiquidasPagamentosConfirmados',()=>{
   cy.get('#VendasLiquidas > div > div.kt-widget24__details.cardDetails > span').contains('R$ 148.622,77').click();
+  cy.get('#gridPrincipal > div > div.dx-datagrid-total-footer.dx-datagrid-nowrap > div > table > tbody > tr > td:nth-child(7) > div').contains('155.098,37');
+  cy.get('#gridPrincipal > div > div.dx-datagrid-total-footer.dx-datagrid-nowrap > div > table > tbody > tr > td:nth-child(9) > div').contains('6.476,03');
+  cy.get('#gridPrincipal > div > div.dx-datagrid-total-footer.dx-datagrid-nowrap > div > table > tbody > tr > td:nth-child(10) > div').contains('148.622,77');
+
 })
 Cypress.Commands.add('validarVendasRejeitadasPagamentosConfirmados',()=>{
   cy.get('#VendasRejeitadas > div > div.kt-widget24__details.cardDetails > span').contains('R$ 0,00').click();
 })
 Cypress.Commands.add('validarDebitosPagamentosConfirmados',()=>{
   cy.get('#Debitos > div > div.kt-widget24__details.cardDetails > span').contains('-R$ 1.380,44').click();
+  cy.get('#gridPrincipal > div > div.dx-datagrid-total-footer.dx-datagrid-nowrap > div > table > tbody > tr > td:nth-child(7) > div').contains('-1.380,44');
+  cy.get('#gridPrincipal > div > div.dx-datagrid-total-footer.dx-datagrid-nowrap > div > table > tbody > tr > td:nth-child(10) > div').contains('-1.380,44');
 })
 Cypress.Commands.add('validarTotalPagoPagamentosConfirmados',()=>{
   cy.get('#TotalPago > div > div.kt-widget24__details.cardDetails > span').contains('R$ 147.242,33').click();
+  cy.get('#gridPrincipal > div > div.dx-datagrid-total-footer.dx-datagrid-nowrap > div > table > tbody > tr > td:nth-child(7) > div').contains('153.717,93');
+  cy.get('#gridPrincipal > div > div.dx-datagrid-total-footer.dx-datagrid-nowrap > div > table > tbody > tr > td:nth-child(9) > div').contains('6.476,03');
+  cy.get('#gridPrincipal > div > div.dx-datagrid-total-footer.dx-datagrid-nowrap > div > table > tbody > tr > td:nth-child(10) > div').contains('147.242,33');
+
 })
 
 Cypress.Commands.add('validarPagamentosConfirmados',()=>{
@@ -464,6 +524,11 @@ Cypress.Commands.add('validarDebitosPrevisaodeRecebimentos',()=>{
 })
 Cypress.Commands.add('validarAtrasadoPrevisaodeRecebimentos',()=>{
   cy.get('#Atrasado > div > div.kt-widget24__details.cardDetails > span').contains('R$ 5,93').click();
+  cy.get('#gridPrincipal > div > div.dx-datagrid-total-footer.dx-datagrid-nowrap > div > table > tbody > tr > td:nth-child(11) > div').contains('7,59');
+  cy.get('#gridPrincipal > div > div.dx-datagrid-total-footer.dx-datagrid-nowrap > div > table > tbody > tr > td:nth-child(13) > div').contains('0,67');
+  cy.get('#gridPrincipal > div > div.dx-datagrid-total-footer.dx-datagrid-nowrap > div > table > tbody > tr > td:nth-child(14) > div').contains('5,93');
+  cy.get('#gridPrincipal > div > div.dx-datagrid-total-footer.dx-datagrid-nowrap > div > table > tbody > tr > td:nth-child(15) > div').contains('5,93');
+
 })
 Cypress.Commands.add('validarAReceberPrevisaodeRecebimentos',()=>{
   cy.get('#AReceber > div > div.kt-widget24__details.cardDetails > span').contains('R$ 5,93').click();
@@ -502,6 +567,10 @@ Cypress.Commands.add('validarCancelamentoPrevisaodeRecebimentosSintetico',()=>{
 })
 Cypress.Commands.add('validarAtrasadoPrevisaodeRecebimentosSintetico',()=>{
   cy.get('#Atrasado > div > div.kt-widget24__details.cardDetails > span').contains('R$ 5,93').click();
+  cy.get('#gridPrincipal > div > div.dx-datagrid-total-footer.dx-datagrid-nowrap > div > table > tbody > tr > td:nth-child(6) > div').contains('7,59');
+  cy.get('#gridPrincipal > div > div.dx-datagrid-total-footer.dx-datagrid-nowrap > div > table > tbody > tr > td:nth-child(7) > div').contains('1,66');
+  cy.get('#gridPrincipal > div > div.dx-datagrid-total-footer.dx-datagrid-nowrap > div > table > tbody > tr > td:nth-child(8) > div').contains('5,93');
+  cy.get('#gridPrincipal > div > div.dx-datagrid-total-footer.dx-datagrid-nowrap > div > table > tbody > tr > td:nth-child(9) > div').contains('5,93');
 })
 Cypress.Commands.add('validarCreditoPrevisaodeRecebimentosSintetico',()=>{
   cy.get('#Credito > div > div.kt-widget24__details.cardDetails > span').contains('R$ 0,00').click();
@@ -534,6 +603,11 @@ Cypress.Commands.add('entrarPagamentosporContaBancaria',()=>{
   cy.get('#kt_aside_menu > ul > li:nth-child(3) > div > ul > li:nth-child(6) > a > span').click();
   cy.wait(5000);
 })
+Cypress.Commands.add('validarPagamentosporContaBancaria',()=>{
+  cy.get('#gridPrincipal > div > div.dx-datagrid-total-footer.dx-datagrid-nowrap > div > table > tbody > tr > td:nth-child(6) > div').contains('125.476,92');
+  cy.get('#gridPrincipal > div > div.dx-datagrid-total-footer.dx-datagrid-nowrap > div > table > tbody > tr > td:nth-child(7) > div').contains('-1.380,44');
+  cy.get('#gridPrincipal > div > div.dx-datagrid-total-footer.dx-datagrid-nowrap > div > table > tbody > tr > td:nth-child(8) > div').contains('124.096,48');
+})
 Cypress.Commands.add('validarUploadsPagamentosporContaBancaria',()=>{
   cy.get('#gridPrincipal > div > div.dx-datagrid-header-panel > div > div > div.dx-toolbar-after > div:nth-child(4) > div > div > div > i').click();
   cy.get('#gridPrincipal > div > div.dx-datagrid-header-panel > div > div > div.dx-toolbar-after > div:nth-child(5) > div > div > div > i').click();
@@ -553,6 +627,14 @@ Cypress.Commands.add('validarUploadsRelatoriodeBaixa',()=>{
 //Tela taxa
 Cypress.Commands.add('entrarTaxa',()=>{
   cy.get('#kt_aside_menu > ul > li:nth-child(4) > a > i').click();
+})
+Cypress.Commands.add('entrarCadastrodeTaxas',()=>{
+  cy.get('#kt_aside_menu > ul > li:nth-child(4) > div > ul > li:nth-child(1) > a > span').click();
+})
+Cypress.Commands.add('validarUploadsCadastrodeTaxas',()=>{
+  cy.get('#gridPrincipal > div > div.dx-datagrid-header-panel > div > div > div.dx-toolbar-after > div:nth-child(4) > div > div > div > i').click();
+  cy.get('#gridPrincipal > div > div.dx-datagrid-header-panel > div > div > div.dx-toolbar-after > div:nth-child(5) > div > div > div > i').click();
+  cy.get('#gridPrincipal > div > div.dx-datagrid-header-panel > div > div > div.dx-toolbar-after > div:nth-child(7) > div > div > div > i').click();
 })
 Cypress.Commands.add('entrarRelatoriodeTaxas',()=>{
   cy.get('#kt_aside_menu > ul > li:nth-child(4) > div > ul > li:nth-child(2) > a > span').click();
@@ -592,6 +674,7 @@ Cypress.Commands.add('validarCard1',()=>{
 Cypress.Commands.add('validarCard2',()=>{
   cy.get('#card-detalhes-banco > div:nth-child(2) > div > div.kt-widget24__details > div.bancariaPrevisto > span.kt-widget24__stats.kt-font-brand.bancariaValorPrevisto').contains('R$ 149.347,15');
   cy.get('#btnExpandCardBanco748').click();
+  
   cy.get('#btnExpandCardBanco748').click();
 })
 Cypress.Commands.add('validarCard3',()=>{
