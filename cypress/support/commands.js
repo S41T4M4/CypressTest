@@ -234,13 +234,13 @@ Cypress.Commands.add('entrarConferenciadeVendas',()=>{
   cy.get('#kt_aside_menu > ul > li:nth-child(2) > div > ul > li:nth-child(1) > a > span').click();
   cy.wait(5000);
 })
-Cypress.Commands.add('selecionarRefoCv',(valorInserido)=>{
+Cypress.Commands.add('selecionarRefoConferenciadeVendas',(valorInserido)=>{
   cy.get('#dropDownSearch > div.dx-dropdowneditor-input-wrapper.dx-selectbox-container > div > div.dx-texteditor-buttons-container > span > span').click();
   cy.wait(2000);
   cy.get('#dropDownSearch > div > div > div.dx-texteditor-input-container > input').click();
   cy.get('#dropDownSearch > div > div > div.dx-texteditor-input-container > input') .type(valorInserido).wait(1000).type('{enter}');
 })
-Cypress.Commands.add('selecionarCalendarioCv',()=>{
+Cypress.Commands.add('selecionarCalendarioConferenciadeVendas',()=>{
   cy.get('#calendarioVendas > div.dx-widget.dx-calendar-navigator > a.dx-calendar-caption-button.dx-button.dx-button-normal.dx-button-mode-contained.dx-widget.dx-button-has-text > div > span').click();
   cy.get('#calendarioVendas > div.dx-widget.dx-calendar-navigator > a.dx-calendar-caption-button.dx-button.dx-button-normal.dx-button-mode-contained.dx-widget.dx-button-has-text > div').click();
   cy.get('#calendarioVendas > div.dx-calendar-body > div > div:nth-child(1) > table > tbody > tr:nth-child(2) > td:nth-child(1) > span').click();
@@ -248,7 +248,7 @@ Cypress.Commands.add('selecionarCalendarioCv',()=>{
   cy.get('#calendarioVendas > div.dx-calendar-body > div > div:nth-child(1) > table > tbody > tr:nth-child(4) > td.dx-calendar-cell.calendarioConciliada > span').click();
   cy.wait(2000);
 })
-Cypress.Commands.add('selecionarCalendarioCv2',()=>{
+Cypress.Commands.add('selecionarCalendarioConferenciadeVendas2',()=>{
   cy.get('#calendarioVendas > div.dx-widget.dx-calendar-navigator > a.dx-calendar-caption-button.dx-button.dx-button-normal.dx-button-mode-contained.dx-widget.dx-button-has-text > div > span').click();
   cy.get('#calendarioVendas > div.dx-widget.dx-calendar-navigator > a.dx-calendar-caption-button.dx-button.dx-button-normal.dx-button-mode-contained.dx-widget.dx-button-has-text > div').click();
   cy.get('#calendarioVendas > div.dx-calendar-body > div > div:nth-child(1) > table > tbody > tr:nth-child(2) > td:nth-child(1) > span').click();
@@ -256,7 +256,7 @@ Cypress.Commands.add('selecionarCalendarioCv2',()=>{
   cy.get('#calendarioVendas > div.dx-calendar-body > div > div:nth-child(1) > table > tbody > tr:nth-child(2) > td.dx-calendar-cell.calendarioParcialmenteConciliada').click();
   cy.wait(2000);
 })
-Cypress.Commands.add('validarValorBrutoCv',()=>{
+Cypress.Commands.add('validarValorBrutoConferenciadeVendas',()=>{
   cy.get('#valorBruto > span').contains('Valor Bruto: R$ 2.255,20');
 })
 Cypress.Commands.add('validarcardValeCard',()=>{

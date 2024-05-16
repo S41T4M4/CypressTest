@@ -19,10 +19,11 @@ describe('Validar telas em [https://app.conciliadora.com.br].', () => {
     cy.logarSite('https://app.conciliadora.com.br');
     cy.entrarVendas();
     cy.entrarConferenciadeVendas();
-    cy.selecionarRefoCv('Empresa Modelo');
-    cy.selecionarCalendarioCv();
-    cy.validarValorBrutoCv();
+    cy.selecionarRefoConferenciadeVendas('Empresa Modelo');
+    cy.selecionarCalendarioConferenciadeVendas();
+    cy.validarValorBrutoConferenciadeVendas();
     cy.validarcardValeCard();
+    cy.selecionarCalendarioConferenciadeVendas2();
 
     // 2.2 > Vendas Sistemas
     cy.entrarVendas();
@@ -81,6 +82,7 @@ describe('Validar telas em [https://app.conciliadora.com.br].', () => {
     cy.entrarPagamentosporContaBancaria();
     cy.selecionarRefo('Empresa Modelo');
     cy.selecionarCalendario();
+    cy.validarPagamentosporContaBancaria();
     cy.validarUploadsPagamentosporContaBancaria();
 
     // 3.5 > Relatorio de baixa
@@ -92,8 +94,13 @@ describe('Validar telas em [https://app.conciliadora.com.br].', () => {
   });
   // 4 > Taxa
   it('Validar tela Taxa', () => {
-    // 4.1 > Relatorio de taxas
+    // 4.1 > Cadastro de taxas
     cy.logarSite('https://app.conciliadora.com.br');
+    cy.entrarTaxa();
+    cy.entrarCadastrodeTaxas();
+    cy.validarUploadsCadastrodeTaxas();
+    
+      // 4.2 > Relatorio de taxas
     cy.entrarTaxa();
     cy.entrarRelatoriodeTaxas();
     cy.selecionarRefo('Empresa Modelo');
