@@ -2,6 +2,7 @@ describe('Validar telas em [https://app.conciliadora.com.br].', () => {
 
   beforeEach(() => {
     cy.logarSite('https://app.conciliadora.com.br');
+    cy.verificarElementosnaTela();
   });
 
   afterEach(() => {
@@ -19,7 +20,7 @@ describe('Validar telas em [https://app.conciliadora.com.br].', () => {
   });
 
   // 2 > Vendas
-  it('Validar tela de Conferencia de Vendas', () => {
+  it('Validar tela de Conferência de Vendas', () => {
     cy.entrarVendas();
     cy.entrarConferenciadeVendas();
     cy.selecionarRefoConferenciadeVendas('Empresa Modelo');
@@ -65,7 +66,7 @@ describe('Validar telas em [https://app.conciliadora.com.br].', () => {
     cy.validarPagamentosConfirmados();
   });
 
-  it('Validar tela de Previsao de Recebimentos', () => {
+  it('Validar tela de Previsão de Recebimentos', () => {
     cy.entrarPagamentos();
     cy.entrarPrevisaodeRecebimentos();
     cy.selecionarRefo('Empresa Modelo');
@@ -74,7 +75,7 @@ describe('Validar telas em [https://app.conciliadora.com.br].', () => {
     cy.validarUploadsPrevisaodeRecebimentos();
   });
 
-  it('Validar tela de Previsao de Recebimentos Sintetico', () => {
+  it('Validar tela de Previsão de Recebimentos Sintético', () => {
     cy.entrarPagamentos();
     cy.entrarPrevisaodeRecebimentosSintetico();
     cy.selecionarRefo('Empresa Modelo');
@@ -83,7 +84,7 @@ describe('Validar telas em [https://app.conciliadora.com.br].', () => {
     cy.validarUploadsPrevisaodeRecebimentosSintetico();
   });
 
-  it('Validar tela de Pagamentos por conta Bancaria', () => {
+  it('Validar tela de Pagamentos por conta Bancária', () => {
     cy.entrarPagamentos();
     cy.entrarPagamentosporContaBancaria();
     cy.selecionarRefo('Empresa Modelo');
@@ -92,7 +93,7 @@ describe('Validar telas em [https://app.conciliadora.com.br].', () => {
     cy.validarUploadsPagamentosporContaBancaria();
   });
 
-  it('Validar tela Relatorio de Baixa', () => {
+  it('Validar tela Relatório de Baixa', () => {
     cy.entrarPagamentos();
     cy.entrarRelatoriodeBaixa();
     cy.selecionarRefo('Empresa Modelo');
@@ -106,7 +107,7 @@ describe('Validar telas em [https://app.conciliadora.com.br].', () => {
     cy.validarUploadsCadastrodeTaxas();
   });
 
-  it('Validar tela Relatorio de Taxas', () => {
+  it('Validar tela Relatório de Taxas', () => {
     cy.entrarTaxa();
     cy.entrarRelatoriodeTaxas();
     cy.selecionarRefo('Empresa Modelo');
@@ -115,7 +116,7 @@ describe('Validar telas em [https://app.conciliadora.com.br].', () => {
   });
 
   // 5 > Banco  
-  it('Validar tela Conciliação Bancaria', () => {
+  it('Validar tela Conciliação Bancária', () => {
     cy.entrarBanco();
     cy.entrarConciliacaoBancaria();
     cy.selecionarRefoConciliacaoBancaria('Posto Modelo');
