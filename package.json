@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "cypress:runDefault": "cypress run --spec cypress/e2e/teste_login/*.cy.js"
+    "cypress:runDefault": "npx cypress run --spec cypress/e2e/validar_telas/*.cy.js"
   },
   "keywords": [],
   "author": "",
@@ -14,5 +14,4 @@
     "cypress": "13.7.3",
     "cypress-mochawesome-reporter": "^3.8.2"
   }
-  
 }
