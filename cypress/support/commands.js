@@ -195,7 +195,7 @@ Cypress.Commands.add('validarTransaçõesVendasDashboard',()=>{
   cy.get('#cardsComplementares > div:nth-child(5) > div > div > span').should('be.visible');
 })
 Cypress.Commands.add('validarValorDashboard',()=>{
-  cy.get('#gridTaxa > div > div.dx-datagrid-total-footer.dx-datagrid-nowrap > div > table > tbody > tr > td:nth-child(5) > div').should('not.be.visible');
+  cy.get('#gridTaxa > div > div.dx-datagrid-total-footer.dx-datagrid-nowrap > div > table > tbody > tr > td:nth-child(5) > div').should('be.visible');
 })
 
 
