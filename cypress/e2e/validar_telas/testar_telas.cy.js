@@ -3,10 +3,12 @@ describe('Validar telas em [https://app.conciliadora.com.br].', () => {
   beforeEach(() => {
     cy.logarSite('https://app.conciliadora.com.br');
     cy.verificarElementosnaTela();
+    cy.validarTela();
   });
 
   afterEach(() => {
     cy.deslogar();
+    
   });
 
   // 1 > Dashboard 
