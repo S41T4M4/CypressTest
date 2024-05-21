@@ -8,7 +8,6 @@ describe('Validar telas em [https://app.conciliadora.com.br].', () => {
 
   afterEach(() => {
     cy.deslogar();
-    
   });
 
   // 1 > Dashboard 
@@ -100,6 +99,8 @@ describe('Validar telas em [https://app.conciliadora.com.br].', () => {
     cy.entrarRelatoriodeBaixa();
     cy.selecionarRefo('Empresa Modelo');
     cy.selecionarCalendario();
+    cy.validarRelatoriodeBaixa();
+    cy.validarUploadsRelatoriodeBaixa();
   });
 
   // 4 > Taxa
