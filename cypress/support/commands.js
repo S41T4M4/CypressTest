@@ -469,35 +469,30 @@ Cypress.Commands.add('validarAReceberAuditoriadeVendas',()=>{
   cy.get('#AReceber > div > div.kt-widget24__details.cardDetails > span').should('be.visible');
 })
 Cypress.Commands.add('validarFiltrosAuditoriadeVendas',()=>{
-  cy.get('#dx-col-95');
-  cy.get('#dx-col-97');
-  cy.get('#dx-col-98');
-  cy.get('#dx-col-99');
-  cy.get('#dx-col-100');
-  cy.get('#dx-col-101');
-  cy.get('#dx-col-103');
-  cy.get('#dx-col-105');
-  cy.get('#dx-col-106');
-  cy.get('#dx-col-108');
-  cy.get('#dx-col-110');
-  cy.get('#dx-col-111');
-  cy.get('#dx-col-112');
-  cy.get('#dx-col-114');
-  cy.get('#dx-col-115');
-  cy.get('#dx-col-116');
-  cy.get('#dx-col-117');
-  cy.get('#dx-col-118');
-  cy.get('#dx-col-121');
-  cy.get('#dx-col-123');
-  cy.get('#dx-col-124');
-  cy.get('#dx-col-125');
-  cy.get('#dx-col-126');
-  cy.get('#dx-col-127');
-
-
-
-
-
+  cy.get('#dx-col-95').click();
+  cy.get('#dx-col-97').click();
+  cy.get('#dx-col-98').click();
+  cy.get('#dx-col-99').click();
+  cy.get('#dx-col-100').click();
+  cy.get('#dx-col-101').click();
+  cy.get('#dx-col-103').click();
+  cy.get('#dx-col-105').click();
+  cy.get('#dx-col-106').click();
+  cy.get('#dx-col-108').click();
+  cy.get('#dx-col-110').click();
+  cy.get('#dx-col-111').click();
+  cy.get('#dx-col-112').click();
+  cy.get('#dx-col-114').click();
+  cy.get('#dx-col-115').click();
+  cy.get('#dx-col-116').click();
+  cy.get('#dx-col-117').click();
+  cy.get('#dx-col-118').click();
+  cy.get('#dx-col-121').click();
+  cy.get('#dx-col-123').click();
+  cy.get('#dx-col-124').click();
+  cy.get('#dx-col-125').click();
+  cy.get('#dx-col-126').click();
+  cy.get('#dx-col-127').click();
 })
 Cypress.Commands.add('validarAuditoriadeVendas',()=>{
   cy.validarVendaBrutaAuditoriadeVendas();
@@ -821,7 +816,7 @@ Cypress.Commands.add('entrarRelatoriodeTaxas',()=>{
   cy.get('#kt_aside_menu > ul > li:nth-child(4) > div > ul > li:nth-child(2) > a > span').click();
   cy.wait(1500);
 })
-Cypress.Commands.add('validarFiltrosRelatoriodeBaixa',()=>{
+Cypress.Commands.add('validarFiltrosRelatoriodeTaxas',()=>{
   cy.get('#dx-col-35').click();
   cy.get('#dx-col-36').click();
   cy.get('#dx-col-37').click();
@@ -838,7 +833,7 @@ Cypress.Commands.add('validarFiltrosRelatoriodeBaixa',()=>{
   cy.get('#dx-col-48').click();
   })
   Cypress.Commands.add('validarConciliacaodeTaxas',()=>{
-    cy.validarFiltrosRelatoriodeBaixa();
+    cy.validarFiltrosRelatoriodeTaxas();
   })
 Cypress.Commands.add('validarUploadsConciliacaodeTaxas',()=>{
   cy.get('#gridPrincipal > div > div.dx-datagrid-header-panel > div > div > div.dx-toolbar-after > div:nth-child(4) > div > div > div > i').click();
@@ -871,7 +866,6 @@ Cypress.Commands.add('validarFiltrosConciliacaoBancaria',()=>{
   cy.get('#dx-col-33').click();
   cy.get('#dx-col-34').click();
   cy.get('#dx-col-35').click();
-
 })
 
 Cypress.Commands.add('validarUploadsConciliacaobancaria',()=>{
@@ -914,6 +908,7 @@ Cypress.Commands.add('validarIconeUpload',()=>{
   cy.get('#modal-header > button').click();
 })
 Cypress.Commands.add('validarConferenciaBancaria',()=>{
+  cy.validarFiltrosConciliacaoBancaria();
   cy.validarCard1();
   cy.validarCard2();
   cy.validarCard3();
@@ -921,5 +916,4 @@ Cypress.Commands.add('validarConferenciaBancaria',()=>{
   cy.validarAdquirente();
   cy.validarCardsAdquirente();
   cy.validarIconeUpload();
-  cy.validarFiltrosConciliacaoBancaria();
 })

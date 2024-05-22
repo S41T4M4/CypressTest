@@ -100,7 +100,6 @@ describe('Validar telas em [https://app.conciliadora.com.br].', () => {
     cy.selecionarRefo('Empresa Modelo');
     cy.selecionarCalendario();
     cy.validarRelatoriodeBaixa();
-    cy.validarUploadsRelatoriodeBaixa();
   });
 
   // 4 > Taxa
@@ -115,6 +114,7 @@ describe('Validar telas em [https://app.conciliadora.com.br].', () => {
     cy.entrarRelatoriodeTaxas();
     cy.selecionarRefo('Empresa Modelo');
     cy.selecionarCalendario();
+    cy.validarFiltrosRelatoriodeTaxas();
     cy.validarUploadsConciliacaodeTaxas();
   });
 
