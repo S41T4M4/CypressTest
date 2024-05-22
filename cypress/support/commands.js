@@ -305,6 +305,12 @@ Cypress.Commands.add('validarNaoEnviadasCanceladas',()=>{
   cy.get('#NaoEnviadasCanceladas > div > div.kt-widget24__details.cardDetails > span').should('be.visible');
   cy.get('#NaoEnviadasCanceladas > div > div.kt-widget24__details.cardDetails > span').click();
 })
+Cypress.Commands.add('avaliarTotalVendasSistemas',()=>{
+  cy.get('#gridPrincipal > div > div.dx-datagrid-total-footer.dx-datagrid-nowrap > div > table > tbody > tr > td:nth-child(9) > div').should('be.visible');
+  cy.get('#gridPrincipal > div > div.dx-datagrid-total-footer.dx-datagrid-nowrap > div > table > tbody > tr > td:nth-child(11) > div').should('be.visible');
+  cy.get('#gridPrincipal > div > div.dx-datagrid-total-footer.dx-datagrid-nowrap > div > table > tbody > tr > td:nth-child(20) > div').should('be.visible');
+
+})
 Cypress.Commands.add('avaliarFiltrosVendasSistemas',()=>{
   cy.get('#dx-col-106').click();
   cy.get('#dx-col-108').click();
@@ -339,6 +345,7 @@ Cypress.Commands.add('validarVendasSistemas',()=>{
   cy.validarNaoEnviadas();
   cy.validarNaoEnviadasCanceladas();
   cy.avaliarFiltrosVendasSistemas();
+  cy.avaliarTotalVendasSistemas();
 })
 Cypress.Commands.add('validarUploadsVendasSistemas',()=>{
   cy.get('#gridPrincipal > div > div.dx-datagrid-header-panel > div > div > div.dx-toolbar-after > div:nth-child(4) > div > div > div > i').click();
@@ -372,6 +379,12 @@ Cypress.Commands.add('validarTotalLiquido',()=>{
   cy.get('#TotalLiquido > div > div.kt-widget24__details.cardDetails > span').click();
 })
 
+Cypress.Commands.add('validarTotalVendasOperadoras', () => {
+ 
+  cy.get('#gridPrincipal > div > div.dx-datagrid-total-footer.dx-datagrid-nowrap > div > table > tbody > tr > td:nth-child(7) > div').should('be.visible');
+  cy.get('#gridPrincipal > div > div.dx-datagrid-total-footer.dx-datagrid-nowrap > div > table > tbody > tr > td:nth-child(9) > div').should('be.visible');
+  cy.get('#gridPrincipal > div > div.dx-datagrid-total-footer.dx-datagrid-nowrap > div > table > tbody > tr > td:nth-child(10) > div').should('be.visible');
+});
 
 Cypress.Commands.add('validarFiltrosVendasOperadoras',()=>{
   cy.get('#dx-col-95').click();
@@ -403,12 +416,14 @@ Cypress.Commands.add('validarFiltrosVendasOperadoras',()=>{
 
 })
 Cypress.Commands.add('validarVendasOperadoras',()=>{
+  cy.validarTotalVendasOperadoras();
   cy.validarVendasBrutas();
   cy.validarTaxa();
   cy.validarVendasLiquidas();
   cy.validarRejeitados();
   cy.validarTotalLiquido();
   cy.validarFiltrosVendasOperadoras();
+
 })
 Cypress.Commands.add('validaUploadsVendasOperadoras',()=>{
   cy.get('#gridPrincipal > div > div.dx-datagrid-header-panel > div > div > div.dx-toolbar-after > div:nth-child(5) > div > div > div > i').click();
