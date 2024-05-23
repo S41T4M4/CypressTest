@@ -40,7 +40,7 @@ describe('Validar telas em [https://app.conciliadora.com.br].', () => {
     cy.validarUploadsVendasSistemas();
   });
 
-  it.only('Validar tela de Vendas Operadoras', () => {
+  it('Validar tela de Vendas Operadoras', () => {
     cy.entrarVendas();
     cy.entrarVendasOperadoras();
     cy.selecionarRefo('Empresa Modelo');
