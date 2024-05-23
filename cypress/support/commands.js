@@ -380,7 +380,6 @@ Cypress.Commands.add('validarTotalLiquido',()=>{
 })
 
 Cypress.Commands.add('validarTotalVendasOperadoras', () => {
- 
   cy.get('#gridPrincipal > div > div.dx-datagrid-total-footer.dx-datagrid-nowrap > div > table > tbody > tr > td:nth-child(7) > div').should('be.visible');
   cy.get('#gridPrincipal > div > div.dx-datagrid-total-footer.dx-datagrid-nowrap > div > table > tbody > tr > td:nth-child(9) > div').should('be.visible');
   cy.get('#gridPrincipal > div > div.dx-datagrid-total-footer.dx-datagrid-nowrap > div > table > tbody > tr > td:nth-child(10) > div').should('be.visible');
