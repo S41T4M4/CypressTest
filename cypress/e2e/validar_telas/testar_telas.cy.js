@@ -28,7 +28,7 @@ describe('Validar telas em [https://app.conciliadora.com.br].', () => {
     cy.selecionarCalendarioConferenciadeVendas();
     cy.validarValorBrutoConferenciadeVendas();
     cy.validarcardValeCard();
-    cy.selecionarCalendarioConferenciadeVendas2();
+
   });
 
   it('Validar tela de Vendas Sistemas', () => {
