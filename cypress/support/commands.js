@@ -577,7 +577,6 @@ Cypress.Commands.add('validarTotalPagoPagamentosConfirmados',()=>{
   cy.get('#TotalPago > div > div.kt-widget24__details.cardDetails > span').should('be.visible');
   cy.get('#TotalPago > div > div.kt-widget24__details.cardDetails > span').click();
 })
-
 Cypress.Commands.add('validarFiltrosPagamentosConfirmados',()=>{
   cy.get('#dx-col-108').click();
   cy.get('#dx-col-109').click();
