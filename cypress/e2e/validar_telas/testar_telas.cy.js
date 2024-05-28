@@ -9,7 +9,7 @@ describe('Validar telas em [https://app.conciliadora.com.br].', () => {
   afterEach(() => {
     cy.deslogar();
   });
-
+// teste de doido
   // 1 > Dashboard 
   it('Validar tela Dashboard Gerencial', () => {
     cy.entrarDashboard();
@@ -21,6 +21,7 @@ describe('Validar telas em [https://app.conciliadora.com.br].', () => {
   });
 
   // 2 > Vendas
+
   it('Validar tela de Conferência de Vendas', () => {
     cy.entrarVendas();
     cy.entrarConferenciadeVendas();
