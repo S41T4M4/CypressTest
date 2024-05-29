@@ -9,8 +9,7 @@ describe('Validar telas em [https://app.conciliadora.com.br].', () => {
   afterEach(() => {
     cy.deslogar();
   });
-// teste de doido
-//123131313321323
+
   // 1 > Dashboard 
   it('Validar tela Dashboard Gerencial', () => {
     cy.entrarDashboard();

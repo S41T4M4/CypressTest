@@ -3,7 +3,8 @@ import '@4tw/cypress-drag-drop';
 
 
 Cypress.Commands.add('login',(url,email,senha)=>{
-  cy.viewport(1920, 1080);
+  const fomartodeImagem =cy.viewport(1920, 1080);
+  fomartodeImagem(); 
   cy.visit(url);
   cy.get('#login').type(email);
   cy.get('#password').type(senha);
@@ -339,50 +340,6 @@ Cypress.Commands.add('avaliarFiltrosVendasSistemas',()=>{
   cy.get('#dx-col-126').click();
   cy.get('#dx-col-127').click();
 })
-Cypress.Commands.add('avaliarFiltrosVendasSistemas', () => {
-  cy.get('#dx-col-106').click();
- 
-  cy.get('#dx-col-108').click();
-  
-  cy.get('#dx-col-109').click();
-  
-  cy.get('#dx-col-110').click();
-  
-  cy.get('#dx-col-111').click();
-  
-  cy.get('#dx-col-112').click();
-  
-  cy.get('#dx-col-113').click();
-  
-  cy.get('#dx-col-114').click();
-  
-  cy.get('#dx-col-115').click();
-  
-  cy.get('#dx-col-116').click();
-  
-  cy.get('#dx-col-117').click();
-  
-  cy.get('#dx-col-118').click();
-  
-  cy.get('#dx-col-119').click();
-  
-  cy.get('#dx-col-120').click();
-  
-  cy.get('#dx-col-121').click();
-  
-  cy.get('#dx-col-122').click();
-  
-  cy.get('#dx-col-123').click();
-  
-  cy.get('#dx-col-124').click();
-  
-  cy.get('#dx-col-125').click();
-  
-  cy.get('#dx-col-126').click();
-  
-  cy.get('#dx-col-127').click();
-  
-});
 
 Cypress.Commands.add('validarVendasSistemas',()=>{
   cy.validarCorretas();
@@ -395,7 +352,7 @@ Cypress.Commands.add('validarVendasSistemas',()=>{
   cy.avaliarFiltrosVendasSistemas();
   cy.avaliarTotalVendasSistemas();
   cy.validarEnviadas();
-  cy.wait(1000);
+ 
 })
 Cypress.Commands.add('validarUploadsVendasSistemas',()=>{
   cy.get('#gridPrincipal > div > div.dx-datagrid-header-panel > div > div > div.dx-toolbar-after > div:nth-child(4) > div > div > div > i').click();
@@ -966,9 +923,14 @@ Cypress.Commands.add('validarCardsAdquirente',()=>{
   cy.get('#btnExpandCardOperadora0').click();
 })
 Cypress.Commands.add('validarIconeUpload',()=>{ 
-  cy.get('#btnUploadBancaria').click();
+  const uploadBancaria = cy.get('#btnUploadBancaria');
+  uploadBancaria.click();
   cy.wait(2000);
   cy.get('#modal-header > button').click();
+})
+Cypress.Commands.add('validarReprocessamento',()=>{
+  const reprocessar = cy.get('#btnReprocessarGrupo');
+  reprocessar.should('be.visible');
 })
 Cypress.Commands.add('validarConferenciaBancaria',()=>{
   cy.validarFiltrosConciliacaoBancaria();
@@ -979,4 +941,7 @@ Cypress.Commands.add('validarConferenciaBancaria',()=>{
   cy.validarAdquirente();
   cy.validarCardsAdquirente();
   cy.validarIconeUpload();
+  cy.validarReprocessamento();
+
 })
+
