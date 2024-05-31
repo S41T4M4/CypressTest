@@ -1,10 +1,10 @@
 pipeline {
     agent any
 
-    parameters {
-        string(name: "SPEC", defaultValue: "./", description: "Path to the test spec file")
+     parameters {
+        string(name: "SPEC", defaultValue: "./cypress/e2e/**/*.cy.js", description: "Path to the test spec file")
         choice(name: "BROWSER", choices: ['chrome', 'edge', 'firefox'], description: "Choose a browser to run the tests")
-    }
+    } 
 
     options {
         ansiColor('xterm')

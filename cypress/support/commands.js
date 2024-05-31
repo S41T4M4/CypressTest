@@ -1,4 +1,9 @@
-Cypress.Commands.add('login',(url,email,senha)=>{
+import '@4tw/cypress-drag-drop';
+
+
+
+
+Cypress.Commands.add('logar',(url,email,senha)=>{
   cy.viewport(1920, 1080);
   cy.visit(url);
   cy.get('#login').type(email);
@@ -313,6 +318,7 @@ Cypress.Commands.add('avaliarTotalVendasSistemas',()=>{
 })
 Cypress.Commands.add('avaliarFiltrosVendasSistemas',()=>{
   cy.get('#dx-col-106').click();
+  cy.wait(3000);
   cy.get('#dx-col-108').click();
   cy.get('#dx-col-109').click();
   cy.get('#dx-col-110').click();
@@ -336,7 +342,6 @@ Cypress.Commands.add('avaliarFiltrosVendasSistemas',()=>{
 })
 
 Cypress.Commands.add('validarVendasSistemas',()=>{
-  cy.validarEnviadas();
   cy.validarCorretas();
   cy.validarDivergentes();
   cy.validarNaoConciliadas();
@@ -346,6 +351,8 @@ Cypress.Commands.add('validarVendasSistemas',()=>{
   cy.validarNaoEnviadasCanceladas();
   cy.avaliarFiltrosVendasSistemas();
   cy.avaliarTotalVendasSistemas();
+  cy.validarEnviadas();
+ 
 })
 Cypress.Commands.add('validarUploadsVendasSistemas',()=>{
   cy.get('#gridPrincipal > div > div.dx-datagrid-header-panel > div > div > div.dx-toolbar-after > div:nth-child(4) > div > div > div > i').click();
@@ -577,7 +584,6 @@ Cypress.Commands.add('validarTotalPagoPagamentosConfirmados',()=>{
   cy.get('#TotalPago > div > div.kt-widget24__details.cardDetails > span').should('be.visible');
   cy.get('#TotalPago > div > div.kt-widget24__details.cardDetails > span').click();
 })
-
 Cypress.Commands.add('validarFiltrosPagamentosConfirmados',()=>{
   cy.get('#dx-col-108').click();
   cy.get('#dx-col-109').click();
@@ -917,9 +923,14 @@ Cypress.Commands.add('validarCardsAdquirente',()=>{
   cy.get('#btnExpandCardOperadora0').click();
 })
 Cypress.Commands.add('validarIconeUpload',()=>{ 
-  cy.get('#btnUploadBancaria').click();
+  const uploadBancaria = cy.get('#btnUploadBancaria');
+  uploadBancaria.click();
   cy.wait(2000);
   cy.get('#modal-header > button').click();
+})
+Cypress.Commands.add('validarReprocessamento',()=>{
+  const reprocessar = cy.get('#btnReprocessarGrupo');
+  reprocessar.should('be.visible');
 })
 Cypress.Commands.add('validarConferenciaBancaria',()=>{
   cy.validarFiltrosConciliacaoBancaria();
@@ -930,4 +941,7 @@ Cypress.Commands.add('validarConferenciaBancaria',()=>{
   cy.validarAdquirente();
   cy.validarCardsAdquirente();
   cy.validarIconeUpload();
+  cy.validarReprocessamento();
+
 })
+

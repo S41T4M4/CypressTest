@@ -3,7 +3,9 @@ const { defineConfig } = require('cypress');
 module.exports = defineConfig({
   e2e: {
     setupNodeEvents(on, config) {
+      experimentalSessionSupport: true,
       require('cypress-mochawesome-reporter/plugin')(on);
+      
       
       return config;
     },
