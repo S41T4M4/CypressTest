@@ -1,8 +1,6 @@
 import '@4tw/cypress-drag-drop';
 
 
-
-
 Cypress.Commands.add('logar',(url,email,senha)=>{
   cy.viewport(1920, 1080);
   cy.visit(url);
@@ -158,7 +156,7 @@ Cypress.Commands.add('validarTela',()=>{
 
 
 
-//Commands: Testar Telas 
+//Commands: Testar Telas Prd
 
 
 
@@ -240,8 +238,9 @@ Cypress.Commands.add('entrarConferenciadeVendas',()=>{
   cy.wait(1500);
 })
 Cypress.Commands.add('selecionarRefoConferenciadeVendas',(valorInserido)=>{
+  cy.wait(1000);
   cy.get('#dropDownSearch > div.dx-dropdowneditor-input-wrapper.dx-selectbox-container > div > div.dx-texteditor-buttons-container > span > span').click();
-  cy.wait(2000);
+  cy.wait(1000);
   cy.get('#dropDownSearch > div > div > div.dx-texteditor-input-container > input').click();
   cy.get('#dropDownSearch > div > div > div.dx-texteditor-input-container > input') .type(valorInserido).wait(1000).type('{enter}');
 })
@@ -943,5 +942,75 @@ Cypress.Commands.add('validarConferenciaBancaria',()=>{
   cy.validarIconeUpload();
   cy.validarReprocessamento();
 
+})
+
+
+
+
+Cypress.Commands.add('entrarVendas',()=>{
+  cy.get('#kt_aside_menu > ul > li:nth-child(2) > a > i').click();
+})
+Cypress.Commands.add('entrarConferenciadeVendas',()=>{
+  cy.get('#kt_aside_menu > ul > li:nth-child(2) > div > ul > li:nth-child(1) > a > span').click();
+  cy.wait(1500);
+})
+Cypress.Commands.add('selecionarRefoConferenciadeVendashom',(valorInserido)=>{
+  cy.wait(1000);
+  cy.get('#dropDownSearch > div.dx-dropdowneditor-input-wrapper.dx-selectbox-container > div > div.dx-texteditor-buttons-container > span > span').click();
+  cy.wait(1000);
+  cy.get('#dropDownSearch > div > div > div.dx-texteditor-input-container > input').click();
+  cy.get('#dropDownSearch > div > div > div.dx-texteditor-input-container > input') .type(valorInserido).wait(1000).type('{enter}');
+})
+Cypress.Commands.add('selecionarCalendarioConferenciadeVendashom',()=>{
+  cy.get('#calendarioVendas > div.dx-widget.dx-calendar-navigator > a.dx-calendar-caption-button.dx-button.dx-button-normal.dx-button-mode-contained.dx-widget.dx-button-has-text > div > span').click();
+  cy.get('#calendarioVendas > div.dx-widget.dx-calendar-navigator > a.dx-calendar-caption-button.dx-button.dx-button-normal.dx-button-mode-contained.dx-widget.dx-button-has-text > div > span').click();
+  cy.get('#dx-cdbd94ad-dbc5-39f3-64b5-ac885bab8de2 > span').click();
+  cy.get('#calendarioVendas > div.dx-calendar-body > div > div:nth-child(1) > table > tbody > tr:nth-child(3) > td:nth-child(3) > span').click();
+  cy.get('#dx-a2e2c0a6-76b9-eb65-31b6-53f4ac87b32d > span').click();
+  cy.wait(2000);
+})
+
+Cypress.Commands.add('validarValorBrutoConferenciadeVendas',()=>{
+  cy.get('#valorBruto > span').should('be.visible');
+})
+Cypress.Commands.add('validarcardValeCard',()=>{
+  cy.get('#tabAdq > div.dx-tabs-scrollable.dx-scrollable.dx-visibility-change-handler.dx-scrollable-horizontal.dx-scrollable-simulated > div > div > div.dx-scrollable-content > div > div:nth-child(22)').click();
+  cy.get('#tabTerminal > div > div > div.kt-widget24__details > span').should('be.visible');
+
+})
+
+
+Cypress.Commands.add('selecionarCalendarioHomologação', ()=> {
+  cy.get('#dateRangePicker').click();  
+  cy.wait(500);
+  cy.get('select.yearselect').eq(0).should('not.be.disabled').select('2023'); 
+  cy.get('select.monthselect').eq(0).should('not.be.disabled').select('Novembro');
+  cy.get('body > div.daterangepicker.ltr.auto-apply.show-ranges.show-calendar.opensright > div.drp-calendar.left > div.calendar-table > table > tbody > tr:nth-child(1) > td:nth-child(5)').click(); 
+  cy.get('body > div.daterangepicker.ltr.auto-apply.show-ranges.show-calendar.opensright > div.drp-calendar.left > div.calendar-table > table > tbody > tr:nth-child(5) > td:nth-child(6)').click();
+  cy.wait(500);
+  cy.get('#btnApply > span').click();
+});
+
+Cypress.Commands.add('entrarPrevisaodeRecebimentosHom',()=>{
+  cy.get('#kt_aside_menu > ul > li:nth-child(3) > div > ul > li:nth-child(2) > a > span').click();
+  cy.wait(1500);
+})
+Cypress.Commands.add('entrarPrevisaodeRecebimentosSinteticoHomologação',()=>{
+  cy.get('#kt_aside_menu > ul > li:nth-child(3) > div > ul > li:nth-child(3) > a > span').click();
+  cy.wait(1500);
+})
+Cypress.Commands.add('entrarPagamentosporContaBancariaHomologação',()=>{
+  cy.get('#kt_aside_menu > ul > li:nth-child(3) > div > ul > li:nth-child(5) > a > span').click();
+  cy.wait(1500);
+})
+Cypress.Commands.add('entrarRelatoriodeBaixaHomologação',()=>{
+  cy.get('#kt_aside_menu > ul > li:nth-child(3) > div > ul > li:nth-child(6) > a > span').click();
+  cy.wait(1500);
+})
+Cypress.Commands.add('entrarConciliacaoBancariaHomologação',()=>{
+  cy.get('#kt_aside_menu > ul > li:nth-child(5) > div > ul > li > a > span').click();
+})
+Cypress.Commands.add('entrarBancoHomologação',()=>{
+  cy.get('#kt_aside_menu > ul > li:nth-child(5) > a > i').click();
 })
 

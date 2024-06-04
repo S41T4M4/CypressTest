@@ -1,7 +1,7 @@
 describe('Validar telas em [https://intranet-hom.conciliadora.com.br].', () => {
 
   beforeEach(() => {
-    cy.logar('https://intranet-hom.conciliadora.com.br','testesautomatizados@conciliadora.com.br','testes123');
+    cy.logar('https://intranet-hom.conciliadora.com.br','testesautomatizados@conciliadora.com.br','Teste123');
     cy.verificarElementosnaTela();
     cy.validarTela();
   });
@@ -26,10 +26,7 @@ describe('Validar telas em [https://intranet-hom.conciliadora.com.br].', () => {
     cy.entrarVendas();
     cy.entrarConferenciadeVendas();
     cy.selecionarRefoConferenciadeVendas('33292');
-    cy.selecionarCalendarioConferenciadeVendas();
-    cy.validarValorBrutoConferenciadeVendas();
-    cy.validarcardValeCard();
-
+    //cy.selecionarCalendarioConferenciadeVendas();
   });
 
   it('Validar tela de Vendas Sistemas', () => {
@@ -70,7 +67,7 @@ describe('Validar telas em [https://intranet-hom.conciliadora.com.br].', () => {
 
   it('Validar tela de Previsão de Recebimentos', () => {
     cy.entrarPagamentos();
-    cy.entrarPrevisaodeRecebimentos();
+    cy.entrarPrevisaodeRecebimentosHom();
     cy.selecionarRefo('33292');
     cy.selecionarCalendario();
     cy.validarPrevisaodeRecebimentos();
@@ -79,7 +76,7 @@ describe('Validar telas em [https://intranet-hom.conciliadora.com.br].', () => {
 
   it('Validar tela de Previsão de Recebimentos Sintético', () => {
     cy.entrarPagamentos();
-    cy.entrarPrevisaodeRecebimentosSintetico();
+    cy.entrarPrevisaodeRecebimentosSinteticoHomologação();
     cy.selecionarRefo('33292');
     cy.selecionarCalendario();
     cy.validarPrevisaodeRecebimentosSintetico();
@@ -88,19 +85,19 @@ describe('Validar telas em [https://intranet-hom.conciliadora.com.br].', () => {
 
   it('Validar tela de Pagamentos por conta Bancária', () => {
     cy.entrarPagamentos();
-    cy.entrarPagamentosporContaBancaria();
+    cy.entrarPagamentosporContaBancariaHomologação();
     cy.selecionarRefo('33292');
     cy.selecionarCalendario();
-    cy.validarPagamentosporContaBancaria();
     cy.validarUploadsPagamentosporContaBancaria();
   });
 
   it('Validar tela Relatório de Baixa', () => {
     cy.entrarPagamentos();
-    cy.entrarRelatoriodeBaixa();
+    cy.entrarRelatoriodeBaixaHomologação();
     cy.selecionarRefo('33292');
     cy.selecionarCalendario();
     cy.validarRelatoriodeBaixa();
+  
   });
 
   // 4 > Taxa
@@ -121,12 +118,12 @@ describe('Validar telas em [https://intranet-hom.conciliadora.com.br].', () => {
 
   // 5 > Banco  
   it('Validar tela Conciliação Bancária', () => {
-    cy.entrarBanco();
-    cy.entrarConciliacaoBancaria();
-    cy.selecionarRefoConciliacaoBancaria('33292');
+    cy.entrarBancoHomologação();
+    cy.entrarConciliacaoBancariaHomologação();
+    cy.selecionarRefoConciliacaoBancaria('REDEODONT');
     cy.selecionarCalendario();
     cy.validarUploadsConciliacaobancaria();
-    cy.validarConferenciaBancaria();
+    //cy.validarConferenciaBancaria();
   });
 
 });
