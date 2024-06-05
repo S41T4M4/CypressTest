@@ -3,9 +3,10 @@ const { defineConfig } = require('cypress');
 module.exports = defineConfig({
   e2e: {
     setupNodeEvents(on, config) {
-      experimentalSessionSupport: true,
+      config.projectId = "ws5913";
+      config.experimentalSessionSupport = true;
+
       require('cypress-mochawesome-reporter/plugin')(on);
-      
       
       return config;
     },
