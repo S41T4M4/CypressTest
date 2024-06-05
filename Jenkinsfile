@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     parameters {
-        choice(name: "SPEC", choices: ["./cypress/e2e/**/testar_telas_intranet_hom.cy.js", "./cypress/e2e/**/testar_telas_app.cy.js"], description: "Path to the test spec file")
+        choice(name: "SPEC", choices: ["./cypress/e2e/**/testar_telas_intranet_hom.cy.js", "./cypress/e2e/**/testar_telas_app.cy.js"], description: "Path to the test spec file !")
         choice(name: "BROWSER", choices: ['chrome', 'edge', 'firefox'], description: "Choose a browser to run the tests")
     } 
 
