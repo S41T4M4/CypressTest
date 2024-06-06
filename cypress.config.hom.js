@@ -8,7 +8,7 @@ module.exports = defineConfig({
       config.experimentalSessionSupport = true;
 
       require('cypress-mochawesome-reporter/plugin')(on);
-      
+
       return config;
     },
     reporter: 'cypress-mochawesome-reporter',
@@ -22,5 +22,9 @@ module.exports = defineConfig({
     pageLoadTimeout: 120000,
     responseTimeout: 60000,
     execTimeout: 120000
+  },
+  env: {
+    username: 'testesautomatizados@conciliadora.com.br',
+    password: 'Teste123'
   }
 });
