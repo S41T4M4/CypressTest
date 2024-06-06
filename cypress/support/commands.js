@@ -869,8 +869,8 @@ Cypress.Commands.add('entrarConciliacaoBancaria',()=>{
 })
 Cypress.Commands.add('selecionarRefoConciliacaoBancaria', (valorInserido) => {
   cy.get('#dropDownSearch > div.dx-dropdowneditor-input-wrapper.dx-selectbox-container > div > div.dx-texteditor-buttons-container > span > span').click();
-  cy.wait(2000);
-  cy.get('#dropDownSearch > div.dx-dropdowneditor-input-wrapper.dx-selectbox-container > div > div.dx-texteditor-input-container > input').click();
+  cy.wait(3500);
+  cy.get('#dropDownSearch > .dx-dropdowneditor-input-wrapper > .dx-texteditor-container > .dx-texteditor-input-container > .dx-texteditor-input').click();
   cy.get('#dropDownSearch > div.dx-dropdowneditor-input-wrapper.dx-selectbox-container > div > div.dx-texteditor-input-container > input') .type(valorInserido).wait(1000).type('{enter}');
 })
 Cypress.Commands.add('validarFiltrosConciliacaoBancaria',()=>{
