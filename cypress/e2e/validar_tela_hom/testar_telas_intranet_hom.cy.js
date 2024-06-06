@@ -1,7 +1,7 @@
 describe('Validar telas em [https://intranet-hom.conciliadora.com.br].', () => {
 
   beforeEach(() => {
-    cy.logar('https://intranet-hom.conciliadora.com.br','testesautomatizados@conciliadora.com.br','Teste123');
+    cy.logar();
     cy.verificarElementosnaTela();
     cy.validarTela();
   });
@@ -26,7 +26,6 @@ describe('Validar telas em [https://intranet-hom.conciliadora.com.br].', () => {
     cy.entrarVendas();
     cy.entrarConferenciadeVendas();
     cy.selecionarRefoConferenciadeVendas('33292');
-    //cy.selecionarCalendarioConferenciadeVendas();
   });
 
   it('Validar tela de Vendas Sistemas', () => {
@@ -125,5 +124,4 @@ describe('Validar telas em [https://intranet-hom.conciliadora.com.br].', () => {
     cy.validarUploadsConciliacaobancaria();
     //cy.validarConferenciaBancaria();
   });
-
 });

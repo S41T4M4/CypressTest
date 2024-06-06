@@ -1,11 +1,9 @@
-import '@4tw/cypress-drag-drop';
 
-
-Cypress.Commands.add('logar',(url,email,senha)=>{
+Cypress.Commands.add('logar',()=>{
   cy.viewport(1920, 1080);
-  cy.visit(url);
-  cy.get('#login').type(email);
-  cy.get('#password').type(senha);
+  cy.visit('https://intranet-hom.conciliadora.com.br/');
+  cy.get('#login').type('testesautomatizados@conciliadora.com.br');
+  cy.get('#password').type('Teste123');
   cy.get('#btnLogin').click();
 })
 
@@ -13,9 +11,15 @@ Cypress.Commands.add('logar',(url,email,senha)=>{
 Cypress.Commands.add('logarSite', (url) => {
   cy.viewport(1920, 1080);
   cy.visit(url); 
-  cy.get('#login').type('vitor.reis@conciliadora.com.br'); 
-  cy.get('#password').type('Staff4912'); 
-  cy.get('#btnLogin').click();
+  cy.get('#login')
+  .should('be.visible')
+  .type('vitor.reis@conciliadora.com.br'); 
+  cy.get('#password')
+  .should('be.visible')
+  .type('Staff4912'); 
+  cy.get('#btnLogin')
+  .should('be.visible')
+  .click();
 })
 
 //683
@@ -23,7 +27,11 @@ Cypress.Commands.add('selecionarRefo', (valorInserido) => {
   cy.get('#dropDownSearch > div > div > div.dx-texteditor-input-container.dx-tag-container.dx-native-click > div.dx-tag > div > div').click();
   cy.wait(1000);
   cy.get('#dropDownSearch > div.dx-dropdowneditor-input-wrapper.dx-selectbox-container > div > div.dx-texteditor-input-container.dx-tag-container.dx-native-click').click();
-  cy.get('#dropDownSearch > div.dx-dropdowneditor-input-wrapper.dx-selectbox-container > div > div.dx-texteditor-input-container.dx-tag-container.dx-native-click > input') .type(valorInserido).wait(1000).type('{enter}');
+  cy.get('#dropDownSearch > div.dx-dropdowneditor-input-wrapper.dx-selectbox-container > div > div.dx-texteditor-input-container.dx-tag-container.dx-native-click > input')
+  .type(valorInserido)
+  .wait(1000)
+  .type('{enter}');
+  cy.get('#dropDownSearch > div > div > div.dx-texteditor-input-container.dx-tag-container.dx-native-click > div.dx-tag > div > span').contains(valorInserido);
 });
 
 
@@ -31,8 +39,12 @@ Cypress.Commands.add('selecionarCalendario', ()=> {
  
   cy.get('#dateRangePicker').click();  
   cy.wait(500);
-  cy.get('select.yearselect').eq(0).should('not.be.disabled').select('2023'); 
-  cy.get('select.monthselect').eq(0).should('not.be.disabled').select('Setembro');
+  cy.get('select.yearselect').eq(0)
+  .should('not.be.disabled')
+  .select('2023'); 
+  cy.get('select.monthselect').eq(0)
+  .should('not.be.disabled')
+  .select('Setembro');
   cy.get('body > div.daterangepicker.ltr.auto-apply.show-ranges.show-calendar.opensright > div.drp-calendar.left > div.calendar-table > table > tbody > tr:nth-child(1) > td:nth-child(5)').click(); 
   cy.get('body > div.daterangepicker.ltr.auto-apply.show-ranges.show-calendar.opensright > div.drp-calendar.left > div.calendar-table > table > tbody > tr:nth-child(5) > td:nth-child(6)').click();
   cy.wait(500);
@@ -41,9 +53,9 @@ Cypress.Commands.add('selecionarCalendario', ()=> {
 
 
 Cypress.Commands.add('deslogar', ()=>{
-    cy.get('#kt_header > div > div > div.topBarItensContainer.topBarUserContainer > div.kt-header__topbar-item.kt-header__topbar-item--user > div.kt-header__topbar-wrapper > span > i').click();
-    cy.get('#kt_header > div > div > div.topBarItensContainer.topBarUserContainer > div.kt-header__topbar-item.kt-header__topbar-item--user.show > div.dropdown-menu.dropdown-menu-fit.dropdown-menu-right.dropdown-menu-anim.dropdown-menu-xl.show > div.kt-notification > div > a').click(); 
-    cy.get('body > div.swal2-container.swal2-center.swal2-backdrop-show > div > div.swal2-actions > button.swal2-confirm.swal2-styled').click();
+  cy.get('#kt_header > div > div > div.topBarItensContainer.topBarUserContainer > div.kt-header__topbar-item.kt-header__topbar-item--user > div.kt-header__topbar-wrapper > span > i').click();
+  cy.get('#kt_header > div > div > div.topBarItensContainer.topBarUserContainer > div.kt-header__topbar-item.kt-header__topbar-item--user.show > div.dropdown-menu.dropdown-menu-fit.dropdown-menu-right.dropdown-menu-anim.dropdown-menu-xl.show > div.kt-notification > div > a').click(); 
+  cy.get('body > div.swal2-container.swal2-center.swal2-backdrop-show > div > div.swal2-actions > button.swal2-confirm.swal2-styled').click();
 })
 
 
@@ -237,13 +249,29 @@ Cypress.Commands.add('entrarConferenciadeVendas',()=>{
   cy.get('#kt_aside_menu > ul > li:nth-child(2) > div > ul > li:nth-child(1) > a > span').click();
   cy.wait(1500);
 })
-Cypress.Commands.add('selecionarRefoConferenciadeVendas',(valorInserido)=>{
-  cy.wait(1000);
-  cy.get('#dropDownSearch > div.dx-dropdowneditor-input-wrapper.dx-selectbox-container > div > div.dx-texteditor-buttons-container > span > span').click();
-  cy.wait(1000);
-  cy.get('#dropDownSearch > div > div > div.dx-texteditor-input-container > input').click();
-  cy.get('#dropDownSearch > div > div > div.dx-texteditor-input-container > input') .type(valorInserido).wait(1000).type('{enter}');
-})
+Cypress.Commands.add('selecionarRefoConferenciadeVendas', (valorInserido) => {
+  // Aguarde até que o input específico esteja visível
+  cy.get('#dropDownSearch > div.dx-dropdowneditor-input-wrapper.dx-selectbox-container > div > div.dx-texteditor-input-container > input')
+    .should('be.visible')
+    .then(() => {
+      // Clique no botão para abrir o dropdown
+      cy.get('#dropDownSearch > div.dx-dropdowneditor-input-wrapper.dx-selectbox-container > div > div.dx-texteditor-buttons-container > span > span')
+        .click();
+
+      // Aguarde novamente até que o input esteja visível após abrir o dropdown
+      cy.get('#dropDownSearch > div > div > div.dx-texteditor-input-container > input')
+        .should('be.visible')
+        .then(() => {
+          // Clique no input e insira o valor desejado
+          cy.get('#dropDownSearch > div > div > div.dx-texteditor-input-container > input')
+            .click()
+            .type(valorInserido)
+            .wait(1000)  // Pode ajustar o tempo de espera conforme necessário
+            .type('{enter}');
+        });
+    });
+});
+
 Cypress.Commands.add('selecionarCalendarioConferenciadeVendas',()=>{
   cy.get('#calendarioVendas > div.dx-widget.dx-calendar-navigator > a.dx-calendar-caption-button.dx-button.dx-button-normal.dx-button-mode-contained.dx-widget.dx-button-has-text > div > span').click();
   cy.get('#calendarioVendas > div.dx-widget.dx-calendar-navigator > a.dx-calendar-caption-button.dx-button.dx-button-normal.dx-button-mode-contained.dx-widget.dx-button-has-text > div').click();
@@ -869,8 +897,8 @@ Cypress.Commands.add('entrarConciliacaoBancaria',()=>{
 })
 Cypress.Commands.add('selecionarRefoConciliacaoBancaria', (valorInserido) => {
   cy.get('#dropDownSearch > div.dx-dropdowneditor-input-wrapper.dx-selectbox-container > div > div.dx-texteditor-buttons-container > span > span').click();
-  cy.wait(1000);
-  cy.get('#dropDownSearch > div.dx-dropdowneditor-input-wrapper.dx-selectbox-container > div > div.dx-texteditor-input-container > input').click();
+  cy.wait(3500);
+  cy.get('#dropDownSearch > .dx-dropdowneditor-input-wrapper > .dx-texteditor-container > .dx-texteditor-input-container > .dx-texteditor-input').click();
   cy.get('#dropDownSearch > div.dx-dropdowneditor-input-wrapper.dx-selectbox-container > div > div.dx-texteditor-input-container > input') .type(valorInserido).wait(1000).type('{enter}');
 })
 Cypress.Commands.add('validarFiltrosConciliacaoBancaria',()=>{
