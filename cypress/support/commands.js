@@ -27,7 +27,11 @@ Cypress.Commands.add('selecionarRefo', (valorInserido) => {
   cy.get('#dropDownSearch > div > div > div.dx-texteditor-input-container.dx-tag-container.dx-native-click > div.dx-tag > div > div').click();
   cy.wait(1000);
   cy.get('#dropDownSearch > div.dx-dropdowneditor-input-wrapper.dx-selectbox-container > div > div.dx-texteditor-input-container.dx-tag-container.dx-native-click').click();
-  cy.get('#dropDownSearch > div.dx-dropdowneditor-input-wrapper.dx-selectbox-container > div > div.dx-texteditor-input-container.dx-tag-container.dx-native-click > input') .type(valorInserido).wait(1000).type('{enter}');
+  cy.get('#dropDownSearch > div.dx-dropdowneditor-input-wrapper.dx-selectbox-container > div > div.dx-texteditor-input-container.dx-tag-container.dx-native-click > input')
+  .type(valorInserido)
+  .wait(1000)
+  .type('{enter}');
+  cy.get('#dropDownSearch > div > div > div.dx-texteditor-input-container.dx-tag-container.dx-native-click > div.dx-tag > div > span').contains(valorInserido);
 });
 
 
@@ -245,13 +249,29 @@ Cypress.Commands.add('entrarConferenciadeVendas',()=>{
   cy.get('#kt_aside_menu > ul > li:nth-child(2) > div > ul > li:nth-child(1) > a > span').click();
   cy.wait(1500);
 })
-Cypress.Commands.add('selecionarRefoConferenciadeVendas',(valorInserido)=>{
-  cy.wait(1000);
-  cy.get('#dropDownSearch > div.dx-dropdowneditor-input-wrapper.dx-selectbox-container > div > div.dx-texteditor-buttons-container > span > span').click();
-  cy.wait(1000);
-  cy.get('#dropDownSearch > div > div > div.dx-texteditor-input-container > input').click();
-  cy.get('#dropDownSearch > div > div > div.dx-texteditor-input-container > input') .type(valorInserido).wait(1000).type('{enter}');
-})
+Cypress.Commands.add('selecionarRefoConferenciadeVendas', (valorInserido) => {
+  // Aguarde até que o input específico esteja visível
+  cy.get('#dropDownSearch > div.dx-dropdowneditor-input-wrapper.dx-selectbox-container > div > div.dx-texteditor-input-container > input')
+    .should('be.visible')
+    .then(() => {
+      // Clique no botão para abrir o dropdown
+      cy.get('#dropDownSearch > div.dx-dropdowneditor-input-wrapper.dx-selectbox-container > div > div.dx-texteditor-buttons-container > span > span')
+        .click();
+
+      // Aguarde novamente até que o input esteja visível após abrir o dropdown
+      cy.get('#dropDownSearch > div > div > div.dx-texteditor-input-container > input')
+        .should('be.visible')
+        .then(() => {
+          // Clique no input e insira o valor desejado
+          cy.get('#dropDownSearch > div > div > div.dx-texteditor-input-container > input')
+            .click()
+            .type(valorInserido)
+            .wait(1000)  // Pode ajustar o tempo de espera conforme necessário
+            .type('{enter}');
+        });
+    });
+});
+
 Cypress.Commands.add('selecionarCalendarioConferenciadeVendas',()=>{
   cy.get('#calendarioVendas > div.dx-widget.dx-calendar-navigator > a.dx-calendar-caption-button.dx-button.dx-button-normal.dx-button-mode-contained.dx-widget.dx-button-has-text > div > span').click();
   cy.get('#calendarioVendas > div.dx-widget.dx-calendar-navigator > a.dx-calendar-caption-button.dx-button.dx-button-normal.dx-button-mode-contained.dx-widget.dx-button-has-text > div').click();

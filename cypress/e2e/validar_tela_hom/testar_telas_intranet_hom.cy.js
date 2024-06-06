@@ -22,7 +22,7 @@ describe('Validar telas em [https://intranet-hom.conciliadora.com.br].', () => {
 
   // 2 > Vendas
 
-  it.only('Validar tela de Conferência de Vendas', () => {
+  it('Validar tela de Conferência de Vendas', () => {
     cy.entrarVendas();
     cy.entrarConferenciadeVendas();
     cy.selecionarRefoConferenciadeVendas('33292');
@@ -124,5 +124,4 @@ describe('Validar telas em [https://intranet-hom.conciliadora.com.br].', () => {
     cy.validarUploadsConciliacaobancaria();
     //cy.validarConferenciaBancaria();
   });
-
 });
