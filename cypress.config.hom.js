@@ -2,13 +2,13 @@ const { defineConfig } = require('cypress');
 
 module.exports = defineConfig({
   e2e: {
-    baseUrl: 'https://app.conciliadora.com.br/',
+    baseUrl: 'https://intranet-hom.conciliadora.com.br/',
     setupNodeEvents(on, config) {
       config.projectId = "ws5913";
       config.experimentalSessionSupport = true;
 
       require('cypress-mochawesome-reporter/plugin')(on);
-      
+
       return config;
     },
     reporter: 'cypress-mochawesome-reporter',
@@ -18,9 +18,13 @@ module.exports = defineConfig({
       html: false,
       json: true
     },
-    defaultCommandTimeout: 60000,
+    defaultCommandTimeout: 40000,
     pageLoadTimeout: 120000,
     responseTimeout: 60000,
     execTimeout: 120000
+  },
+  env: {
+    username: 'testesautomatizados@conciliadora.com.br',
+    password: 'Teste123'
   }
 });
