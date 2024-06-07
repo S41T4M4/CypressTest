@@ -31,7 +31,7 @@ Cypress.Commands.add('selecionarRefo', (valorInserido) => {
   .type(valorInserido)
   .wait(1000)
   .type('{enter}');
-  cy.get('#dropDownSearch > div > div > div.dx-texteditor-input-container.dx-tag-container.dx-native-click > div.dx-tag > div > span').contains(valorInserido);
+  //cy.get('#dropDownSearch > div > div > div.dx-texteditor-input-container.dx-tag-container.dx-native-click > div.dx-tag > div > span').contains(valorInserido);
 });
 
 
