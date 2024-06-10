@@ -13,10 +13,10 @@ Cypress.Commands.add('logarSite', (url) => {
   cy.visit(url); 
   cy.get('#login')
   .should('be.visible')
-  .type('vitor.reis@conciliadora.com.br'); 
+  .type('testesautomatizados@conciliadora.com.br'); 
   cy.get('#password')
   .should('be.visible')
-  .type('Staff4912'); 
+  .type('Testes123'); 
   cy.get('#btnLogin')
   .should('be.visible')
   .click();
