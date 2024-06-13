@@ -25,43 +25,6 @@ Cypress.Commands.add('logarSite', (url) => {
   .should('be.visible')
   .click();
 })
-// Cypress.Commands.add('login', (
-//   user = Cypress.env('user_name'),
-//   password = Cypress.env('user_password'),
-//   { cacheSession = true } = {},
-// ) => {
-//   const login = () => {
-//     cy.log('Visiting login page')
-//     cy.visit('/Login/Index')
-//     cy.viewport(2000, 1080)
-
-//     cy.log('Filling login form')
-//     cy.get('#login').type(user)
-//     cy.get('#password').type(password)
-//     cy.get('#btnLogin').should('be.visible').click()
-//     cy.log('Login form submitted')
-//   }
-
-//   const validate = () => {
-//     cy.log('Validating session')
-//     cy.visit('/ManagementDashboard')
-//     cy.location('pathname', { timeout: 5000 }).should('not.eq', '/Login/Index')
-//     cy.get('body').should('not.contain', 'Login')
-//     cy.log('Session validated')
-//   }
-
-//   const options = {
-//     cacheAcrossSpecs: true,
-//     validate,
-//   }
-
-//   if (cacheSession) {
-//     cy.log('Attempting to restore session')
-//     cy.session(`${user}-${new Date().getTime()}`, login, options)
-//   } else {
-//     login()
-//   }
-// })
 
 Cypress.Commands.add('login', (
   user_name = Cypress.env('user_name'),
