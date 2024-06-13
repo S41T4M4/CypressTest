@@ -5,7 +5,6 @@ module.exports = defineConfig({
     baseUrl: 'https://app.conciliadora.com.br',
     setupNodeEvents(on, config) {
       config.projectId = "ws5913";
-      config.experimentalSessionSupport = true;
       console.log(config); // Adicione esta linha para verificar a configuração
 
 

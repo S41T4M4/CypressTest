@@ -5,7 +5,6 @@ module.exports = defineConfig({
     baseUrl: 'https://intranet-hom.conciliadora.com.br/',
     setupNodeEvents(on, config) {
       config.projectId = "ws5913";
-      config.experimentalSessionSupport = true;
 
       require('cypress-mochawesome-reporter/plugin')(on);
 
