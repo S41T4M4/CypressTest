@@ -16,7 +16,11 @@ Cypress.Commands.add('logarSite', (url) => {
   .type('testesautomatizados@conciliadora.com.br'); 
   cy.get('#password')
   .should('be.visible')
+<<<<<<< HEAD
   .type('Teste123'); 
+=======
+  .type('Testes123'); 
+>>>>>>> 002bedc740069babbb9de1a3f5fa3287acdf6960
   cy.get('#btnLogin')
   .should('be.visible')
   .click();
