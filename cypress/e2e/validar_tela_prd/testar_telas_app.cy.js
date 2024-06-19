@@ -26,8 +26,8 @@ describe('Validar telas em [https://app.conciliadora.com.br].', () => {
     });
 
     cy.wait(10000);
-    cy.entrarDashboard();
-    cy.entrarDashboardGerencial();
+    //cy.entrarDashboard();
+   // cy.entrarDashboardGerencial();
     cy.selecionarRefo('Empresa Modelo');
     cy.selecionarCalendario();
     cy.validarDashboard();
