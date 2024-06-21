@@ -68,11 +68,9 @@ Cypress.Commands.add('login', (
 //683
 Cypress.Commands.add('selecionarRefo', (valorInserido) => {
   cy.get('.dx-texteditor-input').first().click();
-  cy.wait(1000);
   cy.get('#dropDownSearch > div.dx-dropdowneditor-input-wrapper.dx-selectbox-container > div > div.dx-texteditor-input-container.dx-tag-container.dx-native-click').click();
   cy.get('#dropDownSearch > div.dx-dropdowneditor-input-wrapper.dx-selectbox-container > div > div.dx-texteditor-input-container.dx-tag-container.dx-native-click > input')
   .type(valorInserido)
-  .wait(1000)
   .type('{enter}');
   //cy.get('#dropDownSearch > div > div > div.dx-texteditor-input-container.dx-tag-container.dx-native-click > div.dx-tag > div > span').contains(valorInserido);
 });
@@ -210,20 +208,7 @@ Cypress.Commands.add('validarTela',()=>{
 
 
 
-
-//Commands: Testar Telas Prd
-
-
-
 //Tela Dashboard
-Cypress.Commands.add('entrarDashboard',()=>{
- cy.get('#kt_aside_menu > ul > li:nth-child(1) > a > i').click();
-})
-Cypress.Commands.add('entrarDashboardGerencial',()=>{
-  cy.get('#kt_aside_menu > ul > li:nth-child(1) > div > ul > li:nth-child(1) > a > span').click();
-  
-})
-
 Cypress.Commands.add('validarTotalVendasDashboard',()=>{
   cy.get('#gridVendas > div > div.dx-datagrid-total-footer.dx-datagrid-nowrap > div > table > tbody > tr > td:nth-child(2) > div').should('be.visible');
 })
@@ -348,38 +333,31 @@ Cypress.Commands.add('entrarVendasSistemas',()=>{
   cy.wait(1500);
 })
 Cypress.Commands.add('validarEnviadas',()=>{
-  cy.get('#Enviadas > div > div.kt-widget24__details.cardDetails > span').should('be.visible');
-  cy.get('#Enviadas > div > div.kt-widget24__details.cardDetails > span').click();
+  cy.get('#Enviadas > div > div.kt-widget24__details.cardDetails > span').should('be.visible').click();
   
 })
 Cypress.Commands.add('validarCorretas',()=>{
   cy.get('#Corretas > div > div.kt-widget24__details.cardDetails > span').should('be.visible');
-  cy.get('#Corretas > div > div.kt-widget24__details.cardDetails > span').click();
+  cy.get('#Corretas > div > div.kt-widget24__details.cardDetails > span').click()
 })
 Cypress.Commands.add('validarDivergentes',()=>{
-  cy.get('#Divergentes > div > div.kt-widget24__details.cardDetails > span').should('be.visible');
-  cy.get('#Divergentes > div > div.kt-widget24__details.cardDetails > span').click();
+  cy.get('#Divergentes > div > div.kt-widget24__details.cardDetails > span').should('be.visible').click();
   
 })
 Cypress.Commands.add('validarNaoConciliadas',()=>{
-  cy.get('#NaoConciliadas > div > div.kt-widget24__details.cardDetails > span').should('be.visible');
-  cy.get('#NaoConciliadas > div > div.kt-widget24__details.cardDetails > span').click();
+  cy.get('#NaoConciliadas > div > div.kt-widget24__details.cardDetails > span').should('be.visible').click();
 })
 Cypress.Commands.add('validarNaoEncontradas',()=>{
-  cy.get('#NaoEncontradas > div > div.kt-widget24__details.cardDetails > span').should('be.visible');
-  cy.get('#NaoEncontradas > div > div.kt-widget24__details.cardDetails > span').click();
+  cy.get('#NaoEncontradas > div > div.kt-widget24__details.cardDetails > span').should('be.visible').click();
 })
 Cypress.Commands.add('validarVendaemDuplicidade',()=>{
-  cy.get('#VendaEmDuplicidade > div > div.kt-widget24__details.cardDetails > span').should('be.visible');
-  cy.get('#VendaEmDuplicidade > div > div.kt-widget24__details.cardDetails > span').click();
+  cy.get('#VendaEmDuplicidade > div > div.kt-widget24__details.cardDetails > span').should('be.visible').click();
 })
 Cypress.Commands.add('validarNaoEnviadas',()=>{
-  cy.get('#NaoEnviadas > div > div.kt-widget24__details.cardDetails > span').should('be.visible');
-  cy.get('#NaoEnviadas > div > div.kt-widget24__details.cardDetails > span').click();
+  cy.get('#NaoEnviadas > div > div.kt-widget24__details.cardDetails > span').should('be.visible').click();
 })
 Cypress.Commands.add('validarNaoEnviadasCanceladas',()=>{
-  cy.get('#NaoEnviadasCanceladas > div > div.kt-widget24__details.cardDetails > span').should('be.visible');
-  cy.get('#NaoEnviadasCanceladas > div > div.kt-widget24__details.cardDetails > span').click();
+  cy.get('#NaoEnviadasCanceladas > div > div.kt-widget24__details.cardDetails > span').should('be.visible').click();
 })
 Cypress.Commands.add('avaliarTotalVendasSistemas',()=>{
   cy.get('#gridPrincipal > div > div.dx-datagrid-total-footer.dx-datagrid-nowrap > div > table > tbody > tr > td:nth-child(9) > div').should('be.visible');
