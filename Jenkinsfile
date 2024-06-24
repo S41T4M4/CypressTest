@@ -1,11 +1,6 @@
 pipeline {
     agent any
 
-    parameters {
-        choice(name: "SPEC", choices: ["./cypress/e2e/**/testar_telas_intranet_hom.cy.js", "./cypress/e2e/**/testar_telas_app.cy.js"], description: "Caminho para o teste que será executado")
-        choice(name: "BROWSER", choices: ['chrome', 'edge', 'firefox'], description: "Escolha o browser em que será executado")
-        choice(name: "CONFIG", choices: ['cypress.config.js','cypress.config.hom.js'], description: "Escolha uma arquivo de config que deseja utilizar")
-    }
 
     options {
         ansiColor('xterm')
@@ -22,7 +17,23 @@ pipeline {
         stage('Testing') {
             steps {
                 echo "Executando testes com parametros"
-                bat "npx cypress run --browser=${params.BROWSER} --spec=${params.SPEC} --config-file ${params.CONFIG}"
+                bat "npx cypress run"
+            }
+        }
+
+        stage('Send Email') {
+            steps {
+                echo "Enviando relatório por email"
+                emailext (
+                    to: 'destinatario@dominio.com',
+                    subject: "Relatório de Testes Automatizados - ${env.JOB_NAME} #${env.BUILD_NUMBER}",
+                    body: """<p>Olá,</p>
+                             <p>O relatório de testes automatizados está anexado.</p>
+                             <p>Att,<br>Equipe de Qas</p>""",
+                    attachLog: true,
+                    attachmentsPattern: 'cypress/reports/*.json',
+                    mimeType: 'text/html'
+                )
             }
         }
 
