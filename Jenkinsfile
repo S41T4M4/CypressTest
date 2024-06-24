@@ -1,7 +1,5 @@
 pipeline {
     agent any
-
-
     options {
         ansiColor('xterm')
     }
@@ -25,7 +23,7 @@ pipeline {
             steps {
                 echo "Enviando relatório por email"
                 emailext (
-                    to: 'destinatario@dominio.com',
+                    to: 'vitor.reis@conciliadora.com.br',
                     subject: "Relatório de Testes Automatizados - ${env.JOB_NAME} #${env.BUILD_NUMBER}",
                     body: """<p>Olá,</p>
                              <p>O relatório de testes automatizados está anexado.</p>
