@@ -33,7 +33,7 @@ pipeline {
 
             script {
  
-                def reportContent = readFile('cypress/reports/mochawesome.html').trim()
+                def reportContent = readFile('cypress/reports/index.html').trim()
 
 
                 emailext (
