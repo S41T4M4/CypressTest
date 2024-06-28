@@ -39,6 +39,7 @@ pipeline {
                 emailext (
                     subject: "Cypress Tests Status: ${currentBuild.result}",
                     body: "The Cypress tests have finished with result: ${currentBuild.result}\n\n${reportContent}",
+                    to: 'vitor.reis@conciliadora.com.br',
                     mimeType: 'text/html',
                     attachLog: true
                 )
