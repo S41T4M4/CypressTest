@@ -44,23 +44,10 @@ pipeline {
             echo "Sending Office 365 notification with report"
 
             script {
-             
                 def reportContent = readFile('cypress/reports/index.html').trim()
 
-                
                 office365ConnectorSend message: "${currentBuild.result}\n\n${reportContent}", status: "${currentBuild.result}"
             }
-
-           
-            publishHTML([
-                allowMissing: false,
-                alwaysLinkToLastBuild: false,
-                keepAll: true,
-                reportDir: 'cypress/reports',  
-                reportFiles: 'index.html',
-                reportName: 'HTML Report',
-                reportTitles: ''
-            ])
         }
     }
 }
