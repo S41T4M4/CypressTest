@@ -12,7 +12,7 @@ describe('Validar telas em [https://app.conciliadora.com.br].', () => {
     });
   });
 
-  it('Validar tela Dashboard Gerencial', () => {
+  it.only('Validar tela Dashboard Gerencial', () => {
     cy.log('Visiting ManagementDashboard page');
     cy.visit('/ManagementDashboard');
     cy.location('pathname', { timeout: 10000 }).should('eq', '/ManagementDashboard')
