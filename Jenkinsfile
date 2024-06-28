@@ -23,6 +23,7 @@ pipeline {
         stage('Deploying') {
             steps {
                 echo "Deploy the application"
+    
             }
         }
     }
@@ -32,17 +33,28 @@ pipeline {
             echo "Sending email notification with report"
 
             script {
- 
+            
                 def reportContent = readFile('cypress/reports/index.html').trim()
 
-
+           
                 emailext (
                     subject: "Cypress Tests Status: ${currentBuild.result}",
                     body: "The Cypress tests have finished with result: ${currentBuild.result}\n\n${reportContent}",
-                    to: 'vitor.reis@conciliadora.com.br',
                     mimeType: 'text/html',
+                    to: 'seu-email@exemplo.com',  
                     attachLog: true
                 )
+
+               
+                publishHTML([
+                    allowMissing: false,
+                    alwaysLinkToLastBuild: false,
+                    keepAll: true,
+                    reportDir: 'cypress/reports',  
+                    reportFiles: 'index.html',
+                    reportName: 'HTML Report',
+                    reportTitles: ''
+                ])
             }
         }
     }
