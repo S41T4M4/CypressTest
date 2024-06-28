@@ -15,7 +15,7 @@ pipeline {
 
         stage('Testing') {
             steps {
-                echo "Executando testes com parametros"
+                echo "Executando testes"
                 bat "npx cypress run --reporter mochawesome"
             }
         }
@@ -23,38 +23,6 @@ pipeline {
         stage('Deploying') {
             steps {
                 echo "Deploy the application"
-    
-            }
-        }
-    }
-
-    post {
-        always {
-            echo "Sending email notification with report"
-
-            script {
-            
-                def reportContent = readFile('cypress/reports/index.html').trim()
-
-           
-                emailext (
-                    subject: "Cypress Tests Status: ${currentBuild.result}",
-                    body: "The Cypress tests have finished with result: ${currentBuild.result}\n\n${reportContent}",
-                    mimeType: 'text/html',
-                    to: 'seu-email@exemplo.com',  
-                    attachLog: true
-                )
-
-               
-                publishHTML([
-                    allowMissing: false,
-                    alwaysLinkToLastBuild: false,
-                    keepAll: true,
-                    reportDir: 'cypress/reports',  
-                    reportFiles: 'index.html',
-                    reportName: 'HTML Report',
-                    reportTitles: ''
-                ])
             }
         }
     }
