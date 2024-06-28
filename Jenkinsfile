@@ -1,24 +1,29 @@
 pipeline {
     agent any
+
+    options {
+        ansiColor('xterm')
+    }
+
     stages {
-        stage('Install Dependencies') {
+        stage('Building') {
             steps {
-      
-                sh 'npm install'
+                echo "Building the application"
+                bat "npm i"
             }
         }
 
-        stage('Run Tests') {
+        stage('Testing') {
             steps {
-         
-                sh 'npx cypress run'
+                echo "Executando testes com parametros"
+                bat "npx cypress run "
             }
         }
-    }
-    post {
-        always {
-            archiveArtifacts artifacts: 'cypress/reports/*.json', allowEmptyArchive: true
-            junit 'cypress/reports/*.xml'
+
+    stage('Deploying') {
+            steps {
+                echo "Deploy the application"
+            }
         }
     }
 }
