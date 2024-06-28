@@ -31,16 +31,18 @@ pipeline {
         always {
             echo "Sending email notification with report"
 
-      
-            def reportContent = readFile(file: 'cypress/reports/mochawesome.html')
+            script {
+ 
+                def reportContent = readFile('cypress/reports/mochawesome.html').trim()
 
-        
-            emailext (
-                subject: "Cypress Tests Status: ${currentBuild.result}",
-                body: "The Cypress tests have finished with result: ${currentBuild.result}\n\n${reportContent}",
-                mimeType: 'text/html',
-                attachLog: true
-            )
+
+                emailext (
+                    subject: "Cypress Tests Status: ${currentBuild.result}",
+                    body: "The Cypress tests have finished with result: ${currentBuild.result}\n\n${reportContent}",
+                    mimeType: 'text/html',
+                    attachLog: true
+                )
+            }
         }
     }
 }
