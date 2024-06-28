@@ -14,7 +14,7 @@ pipeline {
         notifyBackToNormal: true,
         notifyRepeatedFailure: true,
         timeout: 30000
-    ]]),
+    ]])
         ansiColor('xterm')
     }
 
