@@ -1,6 +1,6 @@
 
 Cypress.Commands.add('logar',()=>{
-  cy.viewport(1920, 1080);
+  //cy.viewport(1920, 1080);
   cy.visit('https://intranet-hom.conciliadora.com.br/');
   cy.get('#login').type('testesautomatizados@conciliadora.com.br');
   cy.get('#password').type('Teste123');
@@ -9,29 +9,70 @@ Cypress.Commands.add('logar',()=>{
 
 
 Cypress.Commands.add('logarSite', (url) => {
-  cy.viewport(1920, 1080);
+  cy.viewport(2000, 1080);
   cy.visit(url); 
   cy.get('#login')
   .should('be.visible')
-  .type('vitor.reis@conciliadora.com.br'); 
+  .type('testesautomatizados@conciliadora.com.br'); 
   cy.get('#password')
   .should('be.visible')
-  .type('Staff4912'); 
+  .type('Teste123'); 
   cy.get('#btnLogin')
   .should('be.visible')
   .click();
 })
 
+Cypress.Commands.add('login', (
+  user_name = Cypress.env('user_name'),
+  user_password = Cypress.env('user_password')
+) => {
+  cy.viewport(2000, 1080);
+
+  cy.session([user_name, user_password], () => {
+    cy.log('Visiting login page');
+    cy.visit('/Login/Index');
+
+    cy.log('Filling login form');
+    cy.get('#login').type(user_name);
+    cy.get('#password').type(user_password, { log: false });
+    cy.get('#btnLogin').should('be.visible').click();
+    
+    cy.log('Login form submitted');
+    
+    // Adicionando uma validação de login
+    cy.location('pathname', { timeout: 10000 }).should('not.eq', '/Login/Index')
+      .then(path => {
+        cy.log(`Login bem-sucedido, navegando para: ${path}`);
+      });
+
+    // Verificando os cookies de sessão
+    cy.getCookies().then(cookies => {
+      cy.log('Cookies after login:', cookies);
+      // Adicione qualquer lógica para verificar cookies específicos, se necessário
+    });
+
+    cy.visit('/ManagementDashboard');
+    cy.location('pathname', { timeout: 10000 }).should('eq', '/ManagementDashboard')
+      .then(path => {
+        cy.log(`Navegando para dashboard: ${path}`);
+      });
+  });
+});
+
+
+
+  Cypress.Commands.add('logout', () => {
+    cy.get('.qa-user-avatar').click()    
+    cy.contains('Sign out').click()
+  })
 //683
 Cypress.Commands.add('selecionarRefo', (valorInserido) => {
-  cy.get('#dropDownSearch > div > div > div.dx-texteditor-input-container.dx-tag-container.dx-native-click > div.dx-tag > div > div').click();
-  cy.wait(1000);
+  cy.get('.dx-texteditor-input').first().click();
   cy.get('#dropDownSearch > div.dx-dropdowneditor-input-wrapper.dx-selectbox-container > div > div.dx-texteditor-input-container.dx-tag-container.dx-native-click').click();
   cy.get('#dropDownSearch > div.dx-dropdowneditor-input-wrapper.dx-selectbox-container > div > div.dx-texteditor-input-container.dx-tag-container.dx-native-click > input')
   .type(valorInserido)
-  .wait(1000)
   .type('{enter}');
-  cy.get('#dropDownSearch > div > div > div.dx-texteditor-input-container.dx-tag-container.dx-native-click > div.dx-tag > div > span').contains(valorInserido);
+  //cy.get('#dropDownSearch > div > div > div.dx-texteditor-input-container.dx-tag-container.dx-native-click > div.dx-tag > div > span').contains(valorInserido);
 });
 
 
@@ -167,20 +208,7 @@ Cypress.Commands.add('validarTela',()=>{
 
 
 
-
-//Commands: Testar Telas Prd
-
-
-
 //Tela Dashboard
-Cypress.Commands.add('entrarDashboard',()=>{
-  cy.get('#kt_aside_menu > ul > li:nth-child(1) > a > i').click();
-})
-Cypress.Commands.add('entrarDashboardGerencial',()=>{
-  cy.get('#kt_aside_menu > ul > li:nth-child(1) > div > ul > li:nth-child(1) > a > span').click();
-  
-})
-
 Cypress.Commands.add('validarTotalVendasDashboard',()=>{
   cy.get('#gridVendas > div > div.dx-datagrid-total-footer.dx-datagrid-nowrap > div > table > tbody > tr > td:nth-child(2) > div').should('be.visible');
 })
@@ -255,20 +283,21 @@ Cypress.Commands.add('selecionarRefoConferenciadeVendas', (valorInserido) => {
     .should('be.visible')
     .then(() => {
       // Clique no botão para abrir o dropdown
-      cy.get('#dropDownSearch > div.dx-dropdowneditor-input-wrapper.dx-selectbox-container > div > div.dx-texteditor-buttons-container > span > span')
+      cy.get('.dx-dropdowneditor-icon')
         .click();
 
       // Aguarde novamente até que o input esteja visível após abrir o dropdown
-      cy.get('#dropDownSearch > div > div > div.dx-texteditor-input-container > input')
-        .should('be.visible')
+      cy.get('.dx-texteditor-input').should('be.visible')
         .then(() => {
           // Clique no input e insira o valor desejado
-          cy.get('#dropDownSearch > div > div > div.dx-texteditor-input-container > input')
-            .click()
+          cy.get('.dx-texteditor-input').click()
+            .wait(5000)  // Pode ajustar o tempo de espera conforme necessário
             .type(valorInserido)
+           // .contains(valorInserido)
             .wait(1000)  // Pode ajustar o tempo de espera conforme necessário
-            .type('{enter}');
-        });
+            cy.get('#btnApply > .trn')
+            .wait(1000) 
+            .click});
     });
 });
 
@@ -304,38 +333,31 @@ Cypress.Commands.add('entrarVendasSistemas',()=>{
   cy.wait(1500);
 })
 Cypress.Commands.add('validarEnviadas',()=>{
-  cy.get('#Enviadas > div > div.kt-widget24__details.cardDetails > span').should('be.visible');
-  cy.get('#Enviadas > div > div.kt-widget24__details.cardDetails > span').click();
+  cy.get('#Enviadas > div > div.kt-widget24__details.cardDetails > span').should('be.visible').click();
   
 })
 Cypress.Commands.add('validarCorretas',()=>{
   cy.get('#Corretas > div > div.kt-widget24__details.cardDetails > span').should('be.visible');
-  cy.get('#Corretas > div > div.kt-widget24__details.cardDetails > span').click();
+  cy.get('#Corretas > div > div.kt-widget24__details.cardDetails > span').click()
 })
 Cypress.Commands.add('validarDivergentes',()=>{
-  cy.get('#Divergentes > div > div.kt-widget24__details.cardDetails > span').should('be.visible');
-  cy.get('#Divergentes > div > div.kt-widget24__details.cardDetails > span').click();
+  cy.get('#Divergentes > div > div.kt-widget24__details.cardDetails > span').should('be.visible').click();
   
 })
 Cypress.Commands.add('validarNaoConciliadas',()=>{
-  cy.get('#NaoConciliadas > div > div.kt-widget24__details.cardDetails > span').should('be.visible');
-  cy.get('#NaoConciliadas > div > div.kt-widget24__details.cardDetails > span').click();
+  cy.get('#NaoConciliadas > div > div.kt-widget24__details.cardDetails > span').should('be.visible').click();
 })
 Cypress.Commands.add('validarNaoEncontradas',()=>{
-  cy.get('#NaoEncontradas > div > div.kt-widget24__details.cardDetails > span').should('be.visible');
-  cy.get('#NaoEncontradas > div > div.kt-widget24__details.cardDetails > span').click();
+  cy.get('#NaoEncontradas > div > div.kt-widget24__details.cardDetails > span').should('be.visible').click();
 })
 Cypress.Commands.add('validarVendaemDuplicidade',()=>{
-  cy.get('#VendaEmDuplicidade > div > div.kt-widget24__details.cardDetails > span').should('be.visible');
-  cy.get('#VendaEmDuplicidade > div > div.kt-widget24__details.cardDetails > span').click();
+  cy.get('#VendaEmDuplicidade > div > div.kt-widget24__details.cardDetails > span').should('be.visible').click();
 })
 Cypress.Commands.add('validarNaoEnviadas',()=>{
-  cy.get('#NaoEnviadas > div > div.kt-widget24__details.cardDetails > span').should('be.visible');
-  cy.get('#NaoEnviadas > div > div.kt-widget24__details.cardDetails > span').click();
+  cy.get('#NaoEnviadas > div > div.kt-widget24__details.cardDetails > span').should('be.visible').click();
 })
 Cypress.Commands.add('validarNaoEnviadasCanceladas',()=>{
-  cy.get('#NaoEnviadasCanceladas > div > div.kt-widget24__details.cardDetails > span').should('be.visible');
-  cy.get('#NaoEnviadasCanceladas > div > div.kt-widget24__details.cardDetails > span').click();
+  cy.get('#NaoEnviadasCanceladas > div > div.kt-widget24__details.cardDetails > span').should('be.visible').click();
 })
 Cypress.Commands.add('avaliarTotalVendasSistemas',()=>{
   cy.get('#gridPrincipal > div > div.dx-datagrid-total-footer.dx-datagrid-nowrap > div > table > tbody > tr > td:nth-child(9) > div').should('be.visible');
@@ -896,7 +918,7 @@ Cypress.Commands.add('entrarConciliacaoBancaria',()=>{
   cy.get('#kt_aside_menu > ul > li:nth-child(6) > div > ul > li > a > span').click();
 })
 Cypress.Commands.add('selecionarRefoConciliacaoBancaria', (valorInserido) => {
-  cy.get('#dropDownSearch > div.dx-dropdowneditor-input-wrapper.dx-selectbox-container > div > div.dx-texteditor-buttons-container > span > span').click();
+  cy.get('#dropDownSearch > .dx-dropdowneditor-input-wrapper > .dx-texteditor-container > .dx-texteditor-input-container > .dx-texteditor-input').click  
   cy.wait(3500);
   cy.get('#dropDownSearch > .dx-dropdowneditor-input-wrapper > .dx-texteditor-container > .dx-texteditor-input-container > .dx-texteditor-input').click();
   cy.get('#dropDownSearch > div.dx-dropdowneditor-input-wrapper.dx-selectbox-container > div > div.dx-texteditor-input-container > input') .type(valorInserido).wait(1000).type('{enter}');

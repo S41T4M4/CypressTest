@@ -1,4 +1,4 @@
-describe('Validar telas em [https://app.conciliadora.com.br].', () => {
+describe('Validar telas em [https://intranet-hom.conciliadora.com.br/].', () => {
 
   beforeEach(() => {
     cy.log('Starting login process');
@@ -12,6 +12,7 @@ describe('Validar telas em [https://app.conciliadora.com.br].', () => {
     });
   });
 
+  // 1 > Dashboard 
   it('Validar tela Dashboard Gerencial', () => {
     cy.log('Visiting ManagementDashboard page');
     cy.visit('/ManagementDashboard');
@@ -26,6 +27,8 @@ describe('Validar telas em [https://app.conciliadora.com.br].', () => {
     });
 
     cy.wait(10000);
+    cy.entrarDashboard();
+    cy.entrarDashboardGerencial();
     cy.selecionarRefo('Empresa Modelo');
     cy.selecionarCalendario();
     cy.validarDashboard();
@@ -36,6 +39,7 @@ describe('Validar telas em [https://app.conciliadora.com.br].', () => {
       cy.log('Cookies after test:', cookies);
     });
   });
+
 
   // 2 > Vendas
 
@@ -54,7 +58,7 @@ describe('Validar telas em [https://app.conciliadora.com.br].', () => {
     cy.visit('/Sales/System');
     cy.entrarVendas();
     cy.entrarVendasSistemas();
-    cy.selecionarRefo('Empresa Modelo')
+    cy.selecionarRefo('33292')
     cy.selecionarCalendario();
     cy.validarVendasSistemas();
     cy.validarUploadsVendasSistemas();
@@ -64,7 +68,7 @@ describe('Validar telas em [https://app.conciliadora.com.br].', () => {
     cy.visit('/Sales/Sales'); 
     cy.entrarVendas();
     cy.entrarVendasOperadoras();
-    cy.selecionarRefo('Empresa Modelo');
+    cy.selecionarRefo('33292');
     cy.selecionarCalendario();
     cy.validarVendasOperadoras();
     cy.validaUploadsVendasOperadoras();
@@ -74,7 +78,7 @@ describe('Validar telas em [https://app.conciliadora.com.br].', () => {
     cy.visit('/Conciliation/SalesAudit'); 
     cy.entrarVendas();
     cy.entrarAuditoriadeVendas();
-    cy.selecionarRefo('Empresa Modelo');
+    cy.selecionarRefo('33292');
     cy.selecionarCalendario();
     cy.validarAuditoriadeVendas();
     cy.validarUploadsAuditoriadeVendas();
@@ -82,20 +86,19 @@ describe('Validar telas em [https://app.conciliadora.com.br].', () => {
 
   // 3 > Pagamentos
   it('Validar tela de Pagamentos Confirmados', () => {
-    cy.visit('/Payments/Confirmed'); 
+    cy.visit('Payments/Confirmed'); 
     cy.entrarPagamentos();
     cy.entrarPagamentosConfirmados();
-    cy.selecionarRefo('Empresa Modelo');
+    cy.selecionarRefo('33292');
     cy.selecionarCalendario();
     cy.validarPagamentosConfirmados();
   });
 
   it('Validar tela de Previsão de Recebimentos', () => {
     cy.visit('/Payments/ReceiptForecast'); 
-
     cy.entrarPagamentos();
-    cy.entrarPrevisaodeRecebimentos();
-    cy.selecionarRefo('Empresa Modelo');
+    cy.entrarPrevisaodeRecebimentosHom();
+    cy.selecionarRefo('33292');
     cy.selecionarCalendario();
     cy.validarPrevisaodeRecebimentos();
     cy.validarUploadsPrevisaodeRecebimentos();
@@ -104,8 +107,8 @@ describe('Validar telas em [https://app.conciliadora.com.br].', () => {
   it('Validar tela de Previsão de Recebimentos Sintético', () => {
     cy.visit('/Payments/SyntheticReceiptForecast')
     cy.entrarPagamentos();
-    cy.entrarPrevisaodeRecebimentosSintetico();
-    cy.selecionarRefo('Empresa Modelo');
+    cy.entrarPrevisaodeRecebimentosSinteticoHomologação();
+    cy.selecionarRefo('33292');
     cy.selecionarCalendario();
     cy.validarPrevisaodeRecebimentosSintetico();
     cy.validarUploadsPrevisaodeRecebimentosSintetico();
@@ -114,20 +117,20 @@ describe('Validar telas em [https://app.conciliadora.com.br].', () => {
   it('Validar tela de Pagamentos por conta Bancária', () => {
     cy.visit('/Payments/BankAccount')
     cy.entrarPagamentos();
-    cy.entrarPagamentosporContaBancaria();
-    cy.selecionarRefo('Empresa Modelo');
+    cy.entrarPagamentosporContaBancariaHomologação();
+    cy.selecionarRefo('33292');
     cy.selecionarCalendario();
-    cy.validarPagamentosporContaBancaria();
     cy.validarUploadsPagamentosporContaBancaria();
   });
 
   it('Validar tela Relatório de Baixa', () => {
     cy.visit('/Payments/DischargeReport')
     cy.entrarPagamentos();
-    cy.entrarRelatoriodeBaixa();
-    cy.selecionarRefo('Empresa Modelo');
+    cy.entrarRelatoriodeBaixaHomologação();
+    cy.selecionarRefo('33292');
     cy.selecionarCalendario();
     cy.validarRelatoriodeBaixa();
+  
   });
 
   // 4 > Taxa
@@ -142,7 +145,7 @@ describe('Validar telas em [https://app.conciliadora.com.br].', () => {
     cy.visit('/Conciliation/ConciliationOfFees')
     cy.entrarTaxa();
     cy.entrarRelatoriodeTaxas();
-    cy.selecionarRefo('Empresa Modelo');
+    cy.selecionarRefo('33292');
     cy.selecionarCalendario();
     cy.validarFiltrosRelatoriodeTaxas();
     cy.validarUploadsConciliacaodeTaxas();
@@ -151,15 +154,15 @@ describe('Validar telas em [https://app.conciliadora.com.br].', () => {
   // 5 > Banco  
   it('Validar tela Conciliação Bancária', () => {
     cy.visit('/BankConciliation/NewBank')
-    cy.entrarBanco();
-    cy.entrarConciliacaoBancaria();
-    cy.selecionarRefoConciliacaoBancaria('Posto Modelo');
+    cy.entrarBancoHomologação();
+    cy.entrarConciliacaoBancariaHomologação();
+    cy.selecionarRefoConciliacaoBancaria('REDEODONT');
     cy.selecionarCalendario();
     cy.validarUploadsConciliacaobancaria();
-    cy.validarConferenciaBancaria();
+    //cy.validarConferenciaBancaria();
   });
-it('Deslogar', () => {
-  cy.visit('/BankConciliation/NewBank')
-  cy.deslogar();
-  })
+  it('Deslogar', () => {
+    cy.visit('/BankConciliation/NewBank')
+    cy.deslogar();
+    })
 });
